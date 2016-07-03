@@ -1,0 +1,13 @@
+{
+    "execMap": {
+        "js": "node"
+    },
+    "ext": "js jsx",
+    "ignore": [
+        ".hg",
+        "node_modules",
+        "bower_components",
+        ".idea"
+    ],
+    "verbose": true
+}

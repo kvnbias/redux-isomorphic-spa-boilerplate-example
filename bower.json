@@ -1,6 +1,6 @@
 {
-  "name": "isotrial",
-  "description": "isotrial",
+  "name": "redux-isomorphic-boilerplate",
+  "description": "Isomorphic boilerplate using redux",
   "main": "server/server.js",
   "license": "MIT",
   "homepage": "",
@@ -11,5 +11,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "material-design-lite": "^1.3.0",
+    "material-design-icons": "^3.0.1"
+  }
 }

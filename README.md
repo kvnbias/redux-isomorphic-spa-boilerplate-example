@@ -1,21 +1,15 @@
 # Isomorphic Boilerplate
 
-Boilerplate for isomorphic rendering using redux, express &amp; loopback(API)
+Boilerplate for isomorphic rendering using redux.
 
 ## Prerequisites
-* Knowledge on react, flux, especially redux
+* NodeJSv7+
 
 ## Get started
-* npm install
-* bower isntall
-* compass compile
-* grunt
+`./update.sh`
 
-For development :
-* nodemon bin/www
-* grunt dev
+## NOTES
+I included some example implementations of redux state, thunk, saga and observable. Feel free to remove those.
 
-
-For front-end only development:
-* make sure /src/client.jsx line 25 contains : syncHistoryWithStore(hashHistory, store);
-* npm run csr
+## For front-end only development:
+change history/createBrowserHistory tohistory/createHashHistory on line 4

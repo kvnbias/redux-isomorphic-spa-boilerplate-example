@@ -17,6 +17,6 @@ const history = createHistory();
 const store = initialize(initialState, history);
 
 ReactDOM.render(
-  <Root store={store} history={history} />,
+  <Root store={ store } history={ history } />,
   document.getElementById('root-contianer')
 );

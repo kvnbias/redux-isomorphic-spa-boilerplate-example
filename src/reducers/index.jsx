@@ -7,10 +7,12 @@
 import { combineReducers } from 'redux';
 import { routerReducer as router } from 'react-router-redux';
 import { activeModule } from './base';
+import counter from '../modules/Counter';
 
 const rootReducer = combineReducers({
   activeModule,
-  router
+  router,
+  counter
 });
 
 export default rootReducer;

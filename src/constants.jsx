@@ -1,6 +1,5 @@
 
 /** pages */
-export const HOME = 'HOME';
-export const ABOUT = 'ABOUT';
-export const COUNT = 'COUNT';
-export const PING = 'PING';
+export const HOME = 'home';
+export const ABOUT = 'about';
+export const FOOTER = 'footer';

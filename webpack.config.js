@@ -1,5 +1,6 @@
 
 var path = require('path');
+var webpack = require('webpack');
 var debug = process.env.NODE_ENV !== 'production';
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -64,10 +65,17 @@ module.exports = {
         to: './css/material.min.css'
       },
       {
+        from: './bower_components/material-design-icons/iconfont',
+        to: './icons'
+      },
+      {
         from: './bower_components/material-design-lite/material.min.js',
         to: './js/material.min.js'
       }
-    ])
+    ]),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    })
   ] : [
     new CopyWebpackPlugin([
       {
@@ -75,10 +83,17 @@ module.exports = {
         to: './css/material.min.css'
       },
       {
+        from: './bower_components/material-design-icons/iconfont',
+        to: './icons'
+      },
+      {
         from: './bower_components/material-design-lite/material.min.js',
         to: './js/material.min.js'
       }
     ]),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),

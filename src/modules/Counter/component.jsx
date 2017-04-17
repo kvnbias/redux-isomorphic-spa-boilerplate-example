@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { HOME, ABOUT, FOOTER } from '../../constants';
+import { HOME, ABOUT } from '../../constants';
 import { setActiveModule } from '../../actions';
 
 import { incrementHomeCounter } from './actions';
@@ -9,9 +9,6 @@ import { decrementHomeCounter } from './actions';
 
 import { incrementAboutCounter } from './actions';
 import { decrementAboutCounter } from './actions';
-
-import { incrementFooterCounter } from './actions';
-import { decrementFooterCounter } from './actions';
 
 const Counter = class Counter extends Component {
 
@@ -38,9 +35,6 @@ const Counter = class Counter extends Component {
       case ABOUT:
         dispatch(incrementAboutCounter(currentCounter));
       break;
-      case FOOTER:
-        dispatch(incrementFooterCounter(currentCounter));
-      break;
     }
   }
 
@@ -54,9 +48,6 @@ const Counter = class Counter extends Component {
       break;
       case ABOUT:
         dispatch(decrementAboutCounter(currentCounter));
-      break;
-      case FOOTER:
-        dispatch(decrementFooterCounter(currentCounter));
       break;
     }
   }

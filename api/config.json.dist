@@ -1,0 +1,28 @@
+{
+    "node": {
+        "host": "127.0.0.1",
+        "port": 8080,
+        "env": "development"
+    },
+    "renderer": {
+        "app_name": "Isomorphic Redux Trial",
+        "host": "http://127.0.0.1",
+        "port": 5000
+    },
+    "database": {
+        "mongodb": {
+            "host": "127.0.0.1",
+            "port": 27017,
+            "database": "redux-isomorphic",
+            "authdb": "redux-isomorphic",
+            "user": "username",
+            "pass": ""
+        }
+    },
+    "security": {
+        "token_life": {
+            "access_token": 360000,
+            "refresh_token": 720000
+        }
+    }
+}

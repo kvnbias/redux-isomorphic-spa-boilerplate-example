@@ -50,7 +50,8 @@ module.exports = {
               plugins: [
                 'react-html-attrs',
                 'transform-class-properties',
-                'transform-decorators-legacy'
+                'transform-decorators-legacy',
+                'transform-async-to-generator'
               ]
             }
           }

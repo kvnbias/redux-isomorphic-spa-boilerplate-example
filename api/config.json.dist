@@ -9,6 +9,11 @@
         "host": "http://127.0.0.1",
         "port": 5000
     },
+    "frontend": {
+        "app_name": "Isomorphic Redux Trial",
+        "host": "http://local.isotrial.org",
+        "port": 80
+    },
     "database": {
         "mongodb": {
             "host": "127.0.0.1",

@@ -8,11 +8,13 @@ import { combineReducers } from 'redux';
 import { routerReducer as router } from 'react-router-redux';
 import { activeModule } from './base';
 import counter from '../modules/Counter';
+import register from '../modules/RegisterForm';
 
 const rootReducer = combineReducers({
   activeModule,
   router,
-  counter
+  counter,
+  register
 });
 
 export default rootReducer;

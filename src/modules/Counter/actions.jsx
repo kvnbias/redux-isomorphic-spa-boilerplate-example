@@ -6,18 +6,18 @@ export const INCREMENT_ABOUT_COUNTER = 'INCREMENT_ABOUT_COUNTER';
 export const DECREMENT_ABOUT_COUNTER = 'DECREMENT_ABOUT_COUNTER';
 
 
-export const incrementHomeCounter = function(counter) {
+export function incrementHomeCounter(counter) {
   return { type: INCREMENT_HOME_COUNTER, counter };
 }
 
-export const decrementHomeCounter = function(counter) {
+export function decrementHomeCounter(counter) {
   return { type: DECREMENT_HOME_COUNTER, counter };
 }
 
-export const incrementAboutCounter = function(counter) {
+export function incrementAboutCounter(counter) {
   return { type: INCREMENT_ABOUT_COUNTER, counter };
 }
 
-export const decrementAboutCounter = function(counter) {
+export function decrementAboutCounter(counter) {
   return { type: DECREMENT_ABOUT_COUNTER, counter };
 }

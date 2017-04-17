@@ -1,6 +1,6 @@
 
 
 export const SET_ACTIVE_MODULE = 'SET_ACTIVE_MODULE';
-export const setActiveModule = function(activeModule) {
+export function setActiveModule(activeModule) {
   return { type: SET_ACTIVE_MODULE, activeModule };
 }

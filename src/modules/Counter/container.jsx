@@ -1,6 +1,5 @@
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
 import { incrementCounter, decrementCounter } from './actions';
 import Counter from './component';
 

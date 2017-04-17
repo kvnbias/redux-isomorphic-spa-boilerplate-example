@@ -16,10 +16,14 @@ module.exports = {
     path: path.resolve(__dirname, 'static/dist')
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.json']
   },
   module: {
     rules: [
+      {
+          test: /\.json$/,
+          loader: 'json-loader'
+      },
       {
         test: /(\.js|\.jsx)$/,
         exclude: /(node_modules|bower_components)/,

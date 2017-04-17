@@ -27,3 +27,22 @@
         margin: 10px 10px;
     }
 }
+
+.centered-text {
+    text-align: center;
+}
+
+input::selection,
+select::selection,
+textarea::selection,
+button::selection {
+    outline: none!important;
+}
+
+.error {
+    background-color: #F08080;
+}
+
+.success {
+    background-color: #80f0ba;
+}

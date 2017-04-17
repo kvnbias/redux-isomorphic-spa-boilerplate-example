@@ -73,9 +73,8 @@ const Counter = class Counter extends Component {
 Counter.propTypes = {
   section: PropTypes.string.isRequired,
   counter: PropTypes.shape({
-    home: PropTypes.number,
-    about: PropTypes.number,
-    footer: PropTypes.number
+    home: PropTypes.number.isRequired,
+    about: PropTypes.number.isRequired
   }).isRequired
 }
 

@@ -7,7 +7,6 @@ var db = require('./database');
 var router = require('./src/routes');
 
 var server = restify.createServer();
-var rendererHost = `${ config.renderer.host }:${ config.renderer.port }`;
 
 /**
  * Parses out the Accept header, and ensures that the server can
@@ -26,7 +25,8 @@ server.use(restify.acceptParser(server.acceptable));
  * }));
  */
 server.use(restify.CORS({
-  origins: [rendererHost]
+  origins: [`${ config.renderer.host }`, `${ config.frontend.host }`],
+  credentials: true
 }));
 
 /**

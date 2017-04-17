@@ -38,6 +38,10 @@ export default class RegisterForm extends Component {
     this.props.attemptRegister(this.state);
   }
 
+  /**
+   * Ill make conditional statements instead
+   * to make it more straightforward and simple.
+   */
   render() {
     let button = null;
 
@@ -63,7 +67,7 @@ export default class RegisterForm extends Component {
 
     let success = [];
     if (this.props.isSuccessful) {
-      success.push(<div class='success'>Registration Success</div>);
+      success.push(<div key='success' class='success'>Registration Success</div>);
     }
 
     return (

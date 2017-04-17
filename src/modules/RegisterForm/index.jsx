@@ -1,11 +1,8 @@
 
-import {
-  REGISTER_ATTEMPT,
-  REGISTER_SUCCESS,
-  REGISTER_ERROR,
-  REGISTER_DONE,
-  RESET_FORM_FLAGS
-} from './actions';
+import { REGISTER_ATTEMPT } from './actions';
+import { REGISTER_SUCCESS } from './actions';
+import { REGISTER_ERROR } from './actions';
+import { REGISTER_DONE } from './actions';
 
 const defaultState = { isAttempting: false, errors: {}, isSuccessful: false };
 export default function register(state, action) {
@@ -20,8 +17,6 @@ export default function register(state, action) {
     case REGISTER_SUCCESS:
       return Object.assign({}, state, { isSuccessful: action.isSuccessful });
       break;
-    case RESET_FORM_FLAGS:
-      return defaultState;
     default:
       return state || defaultState;
   }

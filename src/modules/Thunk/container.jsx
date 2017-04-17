@@ -1,6 +1,6 @@
 
 import { connect } from 'react-redux';
-import { thunkAttemptRegister } from '../RegisterForm/actions';
+import thunkAttemptRegister from '../RegisterForm/thunk';
 import Thunk from './component';
 
 const mapDispatchToProps = function(dispatch) {

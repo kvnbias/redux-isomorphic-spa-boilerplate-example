@@ -4,8 +4,8 @@ export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_DONE = 'REGISTER_DONE';
 export const REGISTER_ERROR = 'REGISTER_ERROR';
 
-export function userAttemptRegister(isAttempting) {
-  return { type: REGISTER_ATTEMPT, isAttempting };
+export function userAttemptRegister(isAttempting, isSuccessful) {
+  return { type: REGISTER_ATTEMPT, isAttempting, isSuccessful };
 }
 
 export function userRegisterDone(isAttempting) {

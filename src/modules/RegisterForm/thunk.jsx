@@ -1,6 +1,7 @@
 
 import * as config from '../../../config';
 import fetch from 'isomorphic-fetch';
+import Promise from 'bluebird';
 
 import { userAttemptRegister } from './actions';
 import { userRegisterSuccess } from './actions';
@@ -10,7 +11,7 @@ import { userRegisterDone } from './actions';
 export default function thunkAttemptRegister(data) {
 
   return (dispatch) => {
-    dispatch(userAttemptRegister(true));
+    dispatch(userAttemptRegister(true, false));
     dispatch(userRegisterFailed({}));
 
     fetch(`${ config.api.host }/register`, {
@@ -19,18 +20,16 @@ export default function thunkAttemptRegister(data) {
       body: JSON.stringify(data)
     })
     .then(response => {
-      if (response.status >= 400) {
-        response.json().then(errors => {
-          dispatch(userRegisterFailed(errors));
-          dispatch(userRegisterDone(false));
-        });
-      }
-      else {
-        response.json().then(response => {
-          dispatch(userRegisterSuccess(true))
-          dispatch(userRegisterDone(false))
-        });
-      }
-    });
+      return response.json().then(json => {
+        if (!response.ok) {
+          throw json;
+        }
+
+        return json;
+      });
+    })
+    .then(json => dispatch(userRegisterSuccess(true)))
+    .catch(err => dispatch(userRegisterFailed(err)))
+    .then(() => dispatch(userRegisterDone(false)));
   };
 }

@@ -9,7 +9,7 @@ Boilerplate for isomorphic rendering using redux.
 * NodeJSv7+ (Koa is used as the server side renderer)
 
 ## Get started
-* `./update.sh`
+* Execute `./update.sh` (the script requires yarn, but you can use npm install if you want to)
 * Copy `config.json.dist` to `config.json`
 * Copy `api/config.json.dist` to `api/config.json`
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-npm install
+yarn install
 bower install
 
 compass compile

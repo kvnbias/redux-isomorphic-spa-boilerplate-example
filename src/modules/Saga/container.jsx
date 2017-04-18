@@ -9,8 +9,7 @@ const mapDispatchToProps = function(dispatch) {
   return {
     resetRegisterState: () => dispatch(resetRegisterState()),
     setActiveModule: () => dispatch(setActiveModule(SAGA)),
-    attemptRegister: (data) => dispatch(userSagaAttemptRegister(data)),
-    dispatch
+    attemptRegister: (data) => dispatch(userSagaAttemptRegister(data))
   };
 }
 

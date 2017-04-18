@@ -1,21 +1,24 @@
 
 import { connect } from 'react-redux';
-import { incrementCounter, decrementCounter } from './actions';
 import Counter from './component';
 
-import { incrementHomeCounter } from './actions';
-import { decrementHomeCounter } from './actions';
-
-import { incrementAboutCounter } from './actions';
-import { decrementAboutCounter } from './actions';
+import * as actions from './actions';
 
 const mapDispatchToProps = function(dispatch) {
   return {
-    incrementHomeCounter: (counter) => dispatch(incrementHomeCounter(counter)),
-    decrementHomeCounter: (counter) => dispatch(decrementHomeCounter(counter)),
+    incrementHomeCounter: (counter) => dispatch(
+      actions.incrementHomeCounter(counter)
+    ),
+    decrementHomeCounter: (counter) => dispatch(
+      actions.decrementHomeCounter(counter)
+    ),
 
-    incrementAboutCounter: (counter) => dispatch(incrementAboutCounter(counter)),
-    decrementAboutCounter: (counter) => dispatch(decrementAboutCounter(counter))
+    incrementAboutCounter: (counter) => dispatch(
+      actions.incrementAboutCounter(counter)
+    ),
+    decrementAboutCounter: (counter) => dispatch(
+      actions.decrementAboutCounter(counter)
+    )
   };
 }
 

@@ -4,18 +4,22 @@ import { get } from './middlewares';
 import rootReducer from './reducers';
 
 import { routerMiddleware } from 'react-router-redux';
-import createSagaMiddleware from 'redux-saga'
+import createSagaMiddleware from 'redux-saga';
+import { createEpicMiddleware } from 'redux-observable';
 
 import registerSaga from './modules/RegisterForm/sagas';
+import rootEpic from './epics';
 
 export default function initialize(preloadedState, history) {
   /** Initiate middlewares */
-  const sagaMiddleware = createSagaMiddleware();
   const routeMiddleware = routerMiddleware(history);
+  const sagaMiddleware = createSagaMiddleware();
+  const epicMiddleware = createEpicMiddleware(rootEpic);
 
   const middlewares = get(
     sagaMiddleware,
-    routeMiddleware
+    routeMiddleware,
+    epicMiddleware
   );
 
   const enhancers = compose(middlewares);

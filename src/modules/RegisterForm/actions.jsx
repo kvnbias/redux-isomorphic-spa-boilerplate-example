@@ -1,4 +1,5 @@
 
+export const REGISTER_OBSERVABLE_ATTEMPT = 'REGISTER_OBSERVABLE_ATTEMPT';
 export const REGISTER_THUNK_ATTEMPT = 'REGISTER_THUNK_ATTEMPT';
 export const REGISTER_SAGA_ATTEMPT = 'REGISTER_SAGA_ATTEMPT';
 
@@ -9,6 +10,10 @@ export const REGISTER_DONE = 'REGISTER_DONE';
 
 export function userThunkAttemptRegister() {
   return { type: REGISTER_THUNK_ATTEMPT };
+}
+
+export function userObservableAttemptRegister(data) {
+  return { type: REGISTER_OBSERVABLE_ATTEMPT, data };
 }
 
 export function userSagaAttemptRegister(data) {

@@ -2,11 +2,7 @@
 import * as config from '../../../config';
 import axios from 'axios';
 
-import { REGISTER_SAGA_ATTEMPT } from './actions';
-
-import { REGISTER_SUCCESS } from './actions';
-import { REGISTER_ERROR } from './actions';
-import { REGISTER_DONE } from './actions';
+import * as actions from './actions';
 
 import { call, put, takeEvery } from 'redux-saga/effects';
 
@@ -18,15 +14,15 @@ function register(action) {
 function* attemptRegister(data) {
     try {
       const user = yield call(register, data);
-      yield put({ type: REGISTER_SUCCESS });
+      yield put({ type: actions.REGISTER_SUCCESS });
     } catch(err) {
       yield put({
-        type: REGISTER_ERROR,
+        type: actions.REGISTER_ERROR,
         err: err.response.data
       });
     }
     finally {
-      yield put({ type: REGISTER_DONE });
+      yield put({ type: actions.REGISTER_DONE });
     }
 }
 
@@ -59,6 +55,6 @@ export default function* registerSaga() {
      * Arguments of REGISTER_SAGA_ATTEMPT will
      * be passed on attemptRegister function.
      */
-    takeEvery(REGISTER_SAGA_ATTEMPT, attemptRegister)
+    takeEvery(actions.REGISTER_SAGA_ATTEMPT, attemptRegister)
   ];
 }

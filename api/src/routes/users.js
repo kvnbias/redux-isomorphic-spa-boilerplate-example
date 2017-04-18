@@ -5,7 +5,6 @@ module.exports = function(server) {
 
   /** Register user */
   server.post('/register', function(req, res, next) {
-
     const { email, first_name, last_name, password } = req.params;
     const user = new User({ email, first_name, last_name, password });
 
@@ -22,4 +21,27 @@ module.exports = function(server) {
     }, 3000);
   });
 
+  /** Get users 1 by 1 lol */
+  server.get('/users', function(req, res, next) {
+    const { page } = req.query;
+
+    User.find()
+    .sort('created_at')
+    .skip(page - 1)
+    .limit(1)
+    .exec()
+    .then((users) => {
+      /**
+       * Has timeout for the sake of demonstrating
+       * request cancellation
+       */
+      setTimeout(function() {
+        res.send(users);
+        next()
+      }, 3000);
+    })
+    .catch(err => {
+      res.send(500, err.errors);
+    });
+  });
 };

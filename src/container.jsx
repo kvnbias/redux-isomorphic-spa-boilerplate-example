@@ -23,7 +23,7 @@ export default class Root extends Component {
         <ConnectedRouter history={ history } routes={ routes }>
           <div id='main-content'>
             <Nav navItems={ navItems } />
-            <main class='mdl-layout__content mdl-grid'>
+            <main class='mdl-layout__content'>
               { routes }
             </main>
             <Footer />

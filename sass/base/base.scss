@@ -32,13 +32,6 @@
     text-align: center;
 }
 
-input::selection,
-select::selection,
-textarea::selection,
-button::selection {
-    outline: none!important;
-}
-
 .error {
     background-color: #F08080;
 }

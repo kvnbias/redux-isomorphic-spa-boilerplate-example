@@ -8,19 +8,16 @@ const defaultState = { isAttempting: false, errors: {}, isSuccessful: false };
 export default function register(state, action) {
   switch(action.type){
     case REGISTER_ATTEMPT:
-      return Object.assign({}, state, {
-        isAttempting: action.isAttempting,
-        isSuccessful: action.isSuccessful
-      });
-      break;
-    case REGISTER_DONE:
-      return Object.assign({}, state, { isAttempting: action.isAttempting });
+      return Object.assign({}, defaultState, { isAttempting: true });
       break;
     case REGISTER_ERROR:
       return Object.assign({}, state, { errors: action.err });
       break;
     case REGISTER_SUCCESS:
-      return Object.assign({}, state, { isSuccessful: action.isSuccessful });
+      return Object.assign({}, state, { isSuccessful: true });
+      break;
+    case REGISTER_DONE:
+      return Object.assign({}, state, { isAttempting: false });
       break;
     default:
       return state || defaultState;

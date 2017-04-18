@@ -11,8 +11,7 @@ import { userRegisterDone } from './actions';
 export default function thunkAttemptRegister(data) {
 
   return (dispatch) => {
-    dispatch(userAttemptRegister(true, false));
-    dispatch(userRegisterFailed({}));
+    dispatch(userAttemptRegister());
 
     fetch(`${ config.api.host }/register`, {
       method: 'POST',
@@ -22,14 +21,14 @@ export default function thunkAttemptRegister(data) {
     .then(response => {
       return response.json().then(json => {
         if (!response.ok) {
-          throw json;
+          dispatch(userRegisterFailed(json));
+        }
+        else {
+          dispatch(userRegisterSuccess());
         }
 
-        return json;
+        dispatch(userRegisterDone());
       });
-    })
-    .then(json => dispatch(userRegisterSuccess(true)))
-    .catch(err => dispatch(userRegisterFailed(err)))
-    .then(() => dispatch(userRegisterDone(false)));
+    });
   };
 }

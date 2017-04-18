@@ -1,5 +1,6 @@
 
 import * as actions from './actions';
+import _ from 'underscore';
 
 const defaultState = {
   isFetching: false,
@@ -26,7 +27,10 @@ export default function user(state, action) {
     case actions.FETCH_SUCCESS:
       if (!state.shouldCancel) {
         return Object.assign({}, state, {
-          list: state.list.concat(action.users)
+          list: _.uniq(
+            state.list.concat(action.users),
+            (item, key, a) => item._id.toString()
+          )
         });
       }
       else return state;

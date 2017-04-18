@@ -1,5 +1,7 @@
 
-import { REGISTER_ATTEMPT } from './actions';
+import { REGISTER_THUNK_ATTEMPT } from './actions';
+import { REGISTER_SAGA_ATTEMPT } from './actions';
+
 import { REGISTER_SUCCESS } from './actions';
 import { REGISTER_ERROR } from './actions';
 import { REGISTER_DONE } from './actions';
@@ -7,7 +9,8 @@ import { REGISTER_DONE } from './actions';
 const defaultState = { isAttempting: false, errors: {}, isSuccessful: false };
 export default function register(state, action) {
   switch(action.type){
-    case REGISTER_ATTEMPT:
+    case REGISTER_THUNK_ATTEMPT:
+    case REGISTER_SAGA_ATTEMPT:
       return Object.assign({}, defaultState, { isAttempting: true });
       break;
     case REGISTER_ERROR:

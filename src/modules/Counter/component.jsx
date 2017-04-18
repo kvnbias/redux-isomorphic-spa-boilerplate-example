@@ -4,12 +4,6 @@ import PropTypes from 'prop-types';
 import { HOME, ABOUT } from '../../constants';
 import { setActiveModule } from '../../actions';
 
-import { incrementHomeCounter } from './actions';
-import { decrementHomeCounter } from './actions';
-
-import { incrementAboutCounter } from './actions';
-import { decrementAboutCounter } from './actions';
-
 const Counter = class Counter extends Component {
 
   constructor(props) {
@@ -19,35 +13,42 @@ const Counter = class Counter extends Component {
     this.onClickDecrement = this.onClickDecrement.bind(this);
   }
 
-  componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(setActiveModule(HOME));
-  }
-
   onClickIncrement(e) {
-    const { counter, section, dispatch } = this.props;
+    const {
+      counter,
+      section,
+      incrementHomeCounter,
+      incrementAboutCounter
+    } = this.props;
+
     const currentCounter = counter[section];
 
     switch (section) {
       case HOME:
-        dispatch(incrementHomeCounter(currentCounter));
+        incrementHomeCounter(currentCounter);
       break;
       case ABOUT:
-        dispatch(incrementAboutCounter(currentCounter));
+        incrementAboutCounter(currentCounter);
       break;
     }
   }
 
   onClickDecrement(e) {
-    const { counter, section, dispatch } = this.props;
+    const {
+      counter,
+      section,
+      decrementHomeCounter,
+      decrementAboutCounter
+    } = this.props;
+
     const currentCounter = counter[section];
 
     switch (section) {
       case HOME:
-        dispatch(decrementHomeCounter(currentCounter));
+        decrementHomeCounter(currentCounter);
       break;
       case ABOUT:
-        dispatch(decrementAboutCounter(currentCounter));
+        decrementAboutCounter(currentCounter);
       break;
     }
   }
@@ -75,7 +76,11 @@ Counter.propTypes = {
   counter: PropTypes.shape({
     home: PropTypes.number.isRequired,
     about: PropTypes.number.isRequired
-  }).isRequired
+  }).isRequired,
+  incrementHomeCounter: PropTypes.func.isRequired,
+  decrementHomeCounter: PropTypes.func.isRequired,
+  incrementAboutCounter: PropTypes.func.isRequired,
+  decrementAboutCounter: PropTypes.func.isRequired
 }
 
 export default Counter;

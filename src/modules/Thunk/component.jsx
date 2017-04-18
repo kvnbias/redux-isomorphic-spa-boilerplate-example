@@ -9,6 +9,11 @@ export default class Thunk extends Component {
     super(props);
   }
 
+  componentWillMount() {
+    this.props.setActiveModule();
+    this.props.resetRegisterState();
+  }
+
   render() {
 
     return (
@@ -31,6 +36,8 @@ export default class Thunk extends Component {
 };
 
 Thunk.propTypes = {
+  resetRegisterState: PropTypes.func.isRequired,
+  setActiveModule: PropTypes.func.isRequired,
   attemptRegister: PropTypes.func.isRequired,
   isAttempting: PropTypes.bool.isRequired,
   isSuccessful: PropTypes.bool.isRequired,

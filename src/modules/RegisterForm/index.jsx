@@ -2,6 +2,7 @@
 import { REGISTER_THUNK_ATTEMPT } from './actions';
 import { REGISTER_SAGA_ATTEMPT } from './actions';
 
+import { RESET_REGISTER_STATE } from './actions';
 import { REGISTER_SUCCESS } from './actions';
 import { REGISTER_ERROR } from './actions';
 import { REGISTER_DONE } from './actions';
@@ -21,6 +22,9 @@ export default function register(state, action) {
       break;
     case REGISTER_DONE:
       return Object.assign({}, state, { isAttempting: false });
+      break;
+    case RESET_REGISTER_STATE:
+      return defaultState;
       break;
     default:
       return state || defaultState;

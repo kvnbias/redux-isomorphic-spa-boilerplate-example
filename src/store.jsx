@@ -9,6 +9,7 @@ import createSagaMiddleware from 'redux-saga'
 import registerSaga from './modules/RegisterForm/sagas';
 
 export default function initialize(preloadedState, history) {
+  /** Initiate middlewares */
   const sagaMiddleware = createSagaMiddleware();
   const routeMiddleware = routerMiddleware(history);
 
@@ -19,11 +20,7 @@ export default function initialize(preloadedState, history) {
 
   const enhancers = compose(middlewares);
 
-  const store = createStore(
-    rootReducer,
-    preloadedState,
-    enhancers
-  );
+  const store = createStore(rootReducer, preloadedState, enhancers);
 
   sagaMiddleware.run(registerSaga);
 

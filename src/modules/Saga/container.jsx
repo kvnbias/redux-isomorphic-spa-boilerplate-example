@@ -1,10 +1,14 @@
 
 import { connect } from 'react-redux';
-import { userSagaAttemptRegister } from '../RegisterForm/actions';
+import { setActiveModule } from '../../actions';
+import { SAGA } from '../../constants';
+import { userSagaAttemptRegister, resetRegisterState } from '../RegisterForm/actions';
 import Saga from './component';
 
 const mapDispatchToProps = function(dispatch) {
   return {
+    resetRegisterState: () => dispatch(resetRegisterState()),
+    setActiveModule: () => dispatch(setActiveModule(SAGA)),
     attemptRegister: (data) => dispatch(userSagaAttemptRegister(data)),
     dispatch
   };

@@ -1,25 +1,17 @@
 
-import React, { Component } from 'react';
-import Counter from '../Counter/container';
+import { connect } from 'react-redux';
+import { setActiveModule } from '../../actions';
 import { HOME } from '../../constants';
+import Home from './component';
 
-export default class Home extends Component {
+const mapDispatchToProps = function(dispatch) {
+  return {
+    setActiveModule: () => dispatch(setActiveModule(HOME))
+  };
+}
 
-  constructor(props) {
-    super(props);
-  }
+const mapStateToProps = function(state, props) {
+  return { };
+}
 
-  render() {
-
-    return (
-      <div class='mdl-cell mdl-cell--4-col page-content'>
-        <Counter counter={ this.props.counter } section={ HOME } />
-        <h5>
-          This is `Home` fragment. This should change on nav click.
-          However the current counter for this page should stay
-          the same on revisit.
-        </h5>
-      </div>
-    );
-  }
-};
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

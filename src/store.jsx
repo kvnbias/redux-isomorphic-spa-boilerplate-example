@@ -8,6 +8,7 @@ import createSagaMiddleware from 'redux-saga';
 import { createEpicMiddleware } from 'redux-observable';
 
 import registerSaga from './modules/RegisterForm/sagas';
+import userSaga from './modules/Fetcher/sagas';
 import rootEpic from './epics';
 
 export default function initialize(preloadedState, history) {
@@ -27,6 +28,7 @@ export default function initialize(preloadedState, history) {
   const store = createStore(rootReducer, preloadedState, enhancers);
 
   sagaMiddleware.run(registerSaga);
+  sagaMiddleware.run(userSaga);
 
   return store;
 };

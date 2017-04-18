@@ -14,9 +14,9 @@ import Thunk from './component';
 
 const mapDispatchToProps = function(dispatch) {
   return {
-    resetRegisterState: () => dispatch(resetRegisterState()),
-
     setActiveModule: () => dispatch(setActiveModule(THUNK)),
+
+    resetRegisterState: () => dispatch(resetRegisterState()),
     attemptRegister: (data) => dispatch(thunkAttemptRegister(data)),
 
     fetch: (page) => dispatch(thunkAttemptFetch(page)),

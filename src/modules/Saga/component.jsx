@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RegisterForm from '../RegisterForm/container';
+import Fetcher from '../Fetcher/container';
 
 export default class Saga extends Component {
 
@@ -17,7 +18,7 @@ export default class Saga extends Component {
   render() {
 
     return (
-      <div class='mdl-cell mdl-cell--12-col centered-text'>
+      <div class='centered-text mdl-grid'>
         <h6>
           This is `Saga` fragment. This should change on nav click.
           However the current users for this page should stay
@@ -28,7 +29,15 @@ export default class Saga extends Component {
           attemptRegister={ this.props.attemptRegister }
           isAttempting={ this.props.isAttempting }
           isSuccessful={ this.props.isSuccessful }
-          errors={ this.props.errors }
+          errors={ this.props.registrationErrors }
+        />
+        <Fetcher
+          fetch={ this.props.fetch }
+          cancel={ this.props.cancel }
+          page={ this.props.page }
+          isFetching={ this.props.isFetching }
+          users={ this.props.users }
+          errors={ this.props.userListErrors }
         />
       </div>
     );
@@ -36,10 +45,18 @@ export default class Saga extends Component {
 };
 
 Saga.propTypes = {
-  resetRegisterState: PropTypes.func.isRequired,
   setActiveModule: PropTypes.func.isRequired,
+
+  resetRegisterState: PropTypes.func.isRequired,
   attemptRegister: PropTypes.func.isRequired,
   isAttempting: PropTypes.bool.isRequired,
   isSuccessful: PropTypes.bool.isRequired,
-  errors: PropTypes.object.isRequired
+  registrationErrors: PropTypes.object.isRequired,
+
+  page: PropTypes.number.isRequired,
+  fetch: PropTypes.func.isRequired,
+  cancel: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  users: PropTypes.array.isRequired,
+  userListErrors: PropTypes.object.isRequired
 }

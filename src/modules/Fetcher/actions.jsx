@@ -11,15 +11,15 @@ export const FETCH_CANCEL = 'FETCH_CANCEL';
 export const FETCH_CANCELED_BY_THUNK = 'FETCH_CANCELED_BY_THUNK';
 
 export function fetchThunkAttempt() {
-  return { type: FETCH_OBSERVABLE_ATTEMPT };
-}
-
-export function fetchObservableAttempt() {
   return { type: FETCH_THUNK_ATTEMPT };
 }
 
-export function fetchSagaAttempt() {
-  return { type: FETCH_SAGA_ATTEMPT };
+export function fetchObservableAttempt() {
+  return { type: FETCH_OBSERVABLE_ATTEMPT };
+}
+
+export function fetchSagaAttempt(page) {
+  return { type: FETCH_SAGA_ATTEMPT, page };
 }
 
 export function fetchCanceledByThunk() {

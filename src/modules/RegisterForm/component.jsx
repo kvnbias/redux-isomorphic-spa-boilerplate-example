@@ -5,11 +5,11 @@ import _ from 'underscore';
 
 /**
  * This component will use its local state for the form fields
- * since it is a waste to put those states in the store.
+ * since it is a waste to put those states in the store (imo).
  * However, the registration status (REGISTER_ATTEMPT,
- * REGISTER_SUCCESS, REGISTER_ERROR) will be taken
- * cared by the thunk, saga or observable
- * for the sake of demonstration.
+ * REGISTER_SUCCESS, REGISTER_ERROR, REGISTER_DONE)
+ * will be taken cared by the thunk, saga or
+ * observable for the sake of demonstration.
  */
 export default class RegisterForm extends Component {
 
@@ -39,8 +39,9 @@ export default class RegisterForm extends Component {
   }
 
   /**
-   * Ill make conditional statements instead
-   * to make it more straightforward and simple.
+   * Ill make conditional statements instead of dumb
+   * components to make it more straightforward
+   * and simple.
    */
   render() {
     let button = null;

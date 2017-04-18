@@ -19,7 +19,7 @@ export default function thunkAttemptRegister(data) {
       body: JSON.stringify(data)
     })
     .then(response => {
-      return response.json().then(json => {
+      response.json().then(json => {
         if (!response.ok) {
           dispatch(userRegisterFailed(json));
         }

@@ -9,7 +9,7 @@ process.traceDeprecation = true;
 module.exports = {
   devtool: debug ? 'inline-sourcemap' : null,
   entry: {
-    index: './src/client.jsx'
+    index: ['babel-polyfill', './src/client.jsx']
   },
   output: {
     filename: '[name].js',

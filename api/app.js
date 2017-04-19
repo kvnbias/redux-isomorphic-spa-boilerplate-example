@@ -5,6 +5,7 @@ var os = require('os');
 var config = require('./config');
 var db = require('./database');
 var router = require('./src/routes');
+var socketio = require('socket.io');
 
 var server = restify.createServer();
 
@@ -83,8 +84,31 @@ server.use(restify.throttle({
   ip: true
 }));
 
+var io = socketio.listen(server.server);
+
+/**
+ * Where `frontend` is the namespace. This is used to separate
+ * the concerns of TCP connections. In real world apps
+ * you'll want to use this if you want to separate
+ * the namespaces between user types or roles
+ */
+io.of('frontend').on('connection', function(socket) {
+  socket.on('initialize', function(token = 'redux-isomorphic-feed') {
+    /**
+     * Where `token` is the message emitted on
+     * `initialize` in the frontend
+     */
+    console.log('Room joined: ', token);
+    socket.join(token);
+  });
+
+  socket.on('ping-server', function(message) {
+    console.log(message);
+  });
+});
+
 /** Setup routes */
-router.initialize(server);
+router.initialize(server, io);
 
 server.listen(config.node.port || 8080, function() {
   console.log(

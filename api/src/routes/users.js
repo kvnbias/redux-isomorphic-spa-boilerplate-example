@@ -1,7 +1,7 @@
 
 var User = require('../models/users');
 
-module.exports = function(server) {
+module.exports = function(server, io) {
 
   /** Register user */
   server.post('/register', function(req, res, next) {
@@ -14,7 +14,18 @@ module.exports = function(server) {
      */
     setTimeout(function() {
       user.save(function(err, user) {
-        if (err) res.send(400, err.errors);
+        if (err) {
+          res.send(400, err.errors);
+          next();
+        };
+
+        /**
+         * Where `redux-isomorphic-feed` is the channel
+         * to broadcast in the namespace `frontend`.
+         */
+        io.of('frontend').to('redux-isomorphic-feed')
+          .emit('user-registered', user);
+
         res.send(user);
         next();
       });

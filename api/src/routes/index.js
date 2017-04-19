@@ -1,5 +1,5 @@
 
 
-exports.initialize = function(server) {
-  require('./users')(server);
+exports.initialize = function(server, io) {
+  require('./users')(server, io);
 };

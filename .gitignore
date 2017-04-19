@@ -19,6 +19,7 @@ node_modules
 bower_components
 npm-debug.log
 static/dist
+static/socket.io
 .sass-cache
 config.json
 api/config.json

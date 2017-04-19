@@ -76,6 +76,10 @@ module.exports = {
       {
         from: './bower_components/material-design-lite/material.min.js',
         to: './js/material.min.js'
+      },
+      {
+        from: './bower_components/socket.io-client/dist/socket.io.min.js',
+        to: '../socket.io/socket.io.min.js'
       }
     ]),
     new webpack.DefinePlugin({
@@ -94,6 +98,10 @@ module.exports = {
       {
         from: './bower_components/material-design-lite/material.min.js',
         to: './js/material.min.js'
+      },
+      {
+        from: './bower_components/socket.io-client/dist/socket.io.min.js',
+        to: '../socket.io/socket.io.min.js'
       }
     ]),
     new webpack.DefinePlugin({

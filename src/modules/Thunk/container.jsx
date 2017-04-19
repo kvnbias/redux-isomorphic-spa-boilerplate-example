@@ -25,7 +25,7 @@ const mapDispatchToProps = function(dispatch) {
 }
 
 const mapStateToProps = function(state, props) {
-  const { register, user } = state;
+  const { register, user, feed } = state;
 
   const { isAttempting, isSuccessful } = register;
 
@@ -39,7 +39,9 @@ const mapStateToProps = function(state, props) {
     isFetching,
     page,
     users: list,
-    userListErrors: user.errors
+    userListErrors: user.errors,
+
+    feed
   };
 }
 

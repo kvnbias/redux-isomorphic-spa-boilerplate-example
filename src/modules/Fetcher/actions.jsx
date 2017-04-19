@@ -14,8 +14,8 @@ export function fetchThunkAttempt() {
   return { type: FETCH_THUNK_ATTEMPT };
 }
 
-export function fetchObservableAttempt() {
-  return { type: FETCH_OBSERVABLE_ATTEMPT };
+export function fetchObservableAttempt(page) {
+  return { type: FETCH_OBSERVABLE_ATTEMPT, page };
 }
 
 export function fetchSagaAttempt(page) {

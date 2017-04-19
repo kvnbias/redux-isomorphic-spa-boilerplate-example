@@ -10,10 +10,10 @@ let NavItem = class NavItem extends Component {
   }
 
   render() {
-    const {name, target} = this.props.navItem;
+    const { name, path } = this.props.navItem;
 
     return (
-      <NavLink class='mdl-navigation__link' to={ target }
+      <NavLink class='mdl-navigation__link' to={ path }
         exact={ true } activeClassName='active'>
           {name}
       </NavLink>
@@ -24,7 +24,7 @@ let NavItem = class NavItem extends Component {
 NavItem.propTypes = {
   navItem: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    target: PropTypes.string.isRequired
+    path: PropTypes.string.isRequired
   }).isRequired
 }
 

@@ -12,7 +12,7 @@ const Nav = class Nav extends Component {
   render() {
     const {navItems} = this.props;
     const items = navItems.map(function(navItem, index) {
-      return (<NavItem key={index} navItem={navItem} />);
+      return (<NavItem key={ index } navItem={ navItem } />);
     });
 
     return (
@@ -21,7 +21,7 @@ const Nav = class Nav extends Component {
           <span class='mdl-layout-title'>FooBarBaz</span>
           <div class='mdl-layout-spacer'></div>
           <nav class='mdl-navigation'>
-            {items}
+            { items }
           </nav>
         </div>
       </header>
@@ -32,7 +32,7 @@ const Nav = class Nav extends Component {
 Nav.propTypes = {
   navItems: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    target: PropTypes.string.isRequired
+    path: PropTypes.string.isRequired
   }).isRequired)
 }
 

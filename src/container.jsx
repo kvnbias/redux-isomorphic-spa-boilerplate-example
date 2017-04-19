@@ -5,8 +5,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { renderRoutes } from 'react-router-config';
 import routes from './routes';
-import Nav from './modules/Nav/component';
-import Footer from './modules/Footer/component';
+import Base from './modules/Base/container';
 
 export default class Root extends Component {
   render() {
@@ -14,14 +13,8 @@ export default class Root extends Component {
 
     return (
       <Provider store={ store }>
-        <ConnectedRouter history={ history } routes={ routes }>
-          <div id='main-content'>
-            <Nav navItems={ routes } />
-            <main class='mdl-layout__content'>
-              { renderRoutes(routes) }
-            </main>
-            <Footer />
-          </div>
+        <ConnectedRouter history={ history } routes={ routes[0].routes }>
+          { renderRoutes(routes) }
         </ConnectedRouter>
       </Provider>
     );

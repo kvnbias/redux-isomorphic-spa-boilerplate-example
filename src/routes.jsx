@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Base from './modules/Base/container';
 import Home from './modules/Home/container';
 import About from './modules/About/container';
 import Thunk from './modules/Thunk/container';
@@ -30,35 +31,41 @@ import Observable from './modules/Observable/container';
 
 const routes = [
   {
-    path: '/',
-    exact: true,
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    exact: true,
-    name: 'About',
-    component: About
-  },
-  {
-    path: '/thunk',
-    exact: true,
-    name: 'Thunk',
-    component: Thunk
-  },
-  {
-    path: '/saga',
-    exact: true,
-    name: 'Saga',
-    component: Saga
-  },
-  {
-    path: '/observable',
-    exact: true,
-    name: 'Observable',
-    component: Observable
+    component: Base,
+    routes: [
+      {
+        path: '/',
+        name: 'Home',
+        exact: true,
+        component: Home
+      },
+      {
+        path: '/about',
+        name: 'About',
+        exact: true,
+        component: About
+      },
+      {
+        path: '/thunk',
+        name: 'Thunk',
+        exact: true,
+        component: Thunk
+      },
+      {
+        path: '/saga',
+        name: 'Saga',
+        exact: true,
+        component: Saga
+      },
+      {
+        path: '/observable',
+        name: 'Observable',
+        exact: true,
+        component: Observable
+      }
+    ]
   }
 ];
 
+/** NOTE: All must be have the exact key */
 export default routes;

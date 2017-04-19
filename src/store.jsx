@@ -11,7 +11,7 @@ import registerSaga from './modules/RegisterForm/sagas';
 import userSaga from './modules/Fetcher/sagas';
 import rootEpic from './epics';
 
-export default function initialize(preloadedState, history) {
+export default function initialize(preloadedState = {}, history = null) {
   /** Initiate middlewares */
   const routeMiddleware = routerMiddleware(history);
   const sagaMiddleware = createSagaMiddleware();

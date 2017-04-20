@@ -1,11 +1,11 @@
 
 import React              from 'react';
+import Helmet             from 'react-helmet';
+import ReactDOMServer     from 'react-dom/server';
 import { Provider }       from 'react-redux';
 import { StaticRouter }   from 'react-router';
-import { renderToString } from 'react-dom/server';
 import { renderRoutes }   from 'react-router-config';
 import routes             from '../routes';
-import Head               from './ssr-head-handler';
 
 /** Server side view handler */
 export default class ViewHandler {
@@ -22,25 +22,39 @@ export default class ViewHandler {
   }
 
   /** Get HTML skeleton */
-  getHTMLPrototype(componentHTML, initialState) {
-    const header = renderToString(<Head />);
-    const content = renderToString(componentHTML);
+  getHTMLPrototype(component, initialState) {
+    const componentHTML = ReactDOMServer.renderToString(component);
 
-    return `
+    /**
+     * Prevent memory leak.
+     * See https://github.com/nfl/react-helmet#server-usage
+     */
+    const head = Helmet.renderStatic();
+
+    const html = `
       <!DOCTYPE html>
-      <html lang="en-us">
-        ${ header }
+      <html lang='en-us'>
+        <head>
+          ${ head.title }
+          <meta name='viewport' content='width=device-width, initial-scale=1' />
+          ${ head.meta }
+          ${ head.link }
+          ${ head.script }
+          <link rel='stylesheet' type='text/css' href='/dist/css/material.min.css' />
+          <link rel='stylesheet' type='text/css' href='/dist/css/main.css' />
+        </head>
         <body>
-          <!-- IMPORTANT! This container shouldnt have a white space! -->
-          <div id="root-contianer" class="mdl-layout mdl-js-layout mdl-layout--fixed-header">${ content }</div>
-          <script type="application/javascript">
+          <div id='root-contianer' class='mdl-layout mdl-js-layout mdl-layout--fixed-header'>${ componentHTML }</div>
+          <script type='application/javascript'>
             window.__INITIAL_STATE__ = ${ JSON.stringify(initialState) };
           </script>
-          <script type="application/javascript" src="/dist/js/material.min.js"></script>
-          <script type="application/javascript" src="/dist/index.js"></script>
+          <script type='application/javascript' src='/dist/js/material.min.js'></script>
+          <script type='application/javascript' src='/dist/index.js'></script>
         </body>
       </html>
     `;
+
+    return html;
   }
 
   /** Get HTML altogether with current state */

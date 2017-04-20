@@ -6,7 +6,6 @@ import Users                from './component';
 
 const mapDispatchToProps = function(dispatch) {
   return {
-    dispatch,
     setActiveModule: () => dispatch(
       setActiveModule(USERS)
     )

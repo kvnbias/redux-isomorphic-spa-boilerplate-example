@@ -12,8 +12,8 @@ class AppHelmet extends Component {
     return (
       <Helmet
         title={ title }
-        titleTemplate={ `%s | Kevin Baisas` }
-        defaultTitle='Kevin Baisas'
+        titleTemplate={ `%s` }
+        defaultTitle='Default Title'
         script={ script }
         meta={ meta }
         link={ link }

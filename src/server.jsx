@@ -46,6 +46,7 @@ app.use(async function(ctx, next) {
     .then(function() {
       const html  = viewHandler.renderView(store, ctx);
       ctx.body    = html;
+      next();
     })
   }
 });

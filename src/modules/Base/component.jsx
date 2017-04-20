@@ -12,10 +12,6 @@ export default class Base extends Component {
     super(props);
   }
 
-  componentWillMount() {
-    console.log(this.props)
-  }
-
   render() {
     return (
       <div class='base-container'>
@@ -30,5 +26,5 @@ export default class Base extends Component {
 };
 
 Base.propTypes = {
-  route: PropTypes.array.isRequired
+  route: PropTypes.object.isRequired
 }

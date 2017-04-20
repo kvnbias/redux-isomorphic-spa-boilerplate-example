@@ -1,11 +1,41 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import AppHelmet from '../AppHelmet/component';
 import RegisterForm from '../RegisterForm/container';
 import Fetcher from '../Fetcher/container';
 import Feed from '../Feed/container';
 
 export default class Observable extends Component {
+
+  getMeta() {
+    return [
+      {
+        'name': 'description',
+        'content': 'Sample description here!'
+      }
+    ];
+  };
+
+  getLink() {
+    return [
+      {
+        'rel': 'canonical',
+        'href': 'http://www.your-website.xyz/home'
+      }
+    ];
+  };
+
+  getScript() {
+    return [
+      {
+        'type': 'application/ld+json',
+        innerHTML: `{
+          '@context': 'http://schema.org'
+        }`
+      }
+    ];
+  };
 
   constructor(props) {
     super(props);
@@ -20,6 +50,12 @@ export default class Observable extends Component {
 
     return (
       <div class='centered-text mdl-grid'>
+        <AppHelmet
+          title='Observable'
+          meta={ this.getMeta() }
+          link={ this.getLink() }
+          script={ this.getScript() }
+        />
         <h6>
           This is `Observable` fragment. This should change on nav click.
           However the current users for this page should stay

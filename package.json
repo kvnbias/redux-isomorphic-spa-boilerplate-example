@@ -25,6 +25,7 @@
     "history": "^4.6.1",
     "json-loader": "^0.5.4",
     "koa": "^2.2.0",
+    "koa-static": "^3.0.0",
     "mongoose": "^4.9.5",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",

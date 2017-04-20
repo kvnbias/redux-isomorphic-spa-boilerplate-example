@@ -20,4 +20,4 @@ Boilerplate for isomorphic rendering using redux.
 ## For front-end only development:
 change history/createBrowserHistory tohistory/createHashHistory on line 4
 
-index.html file is under the `static` folder
+index file `app.html` is under the `static` folder

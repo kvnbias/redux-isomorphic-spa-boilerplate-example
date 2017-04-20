@@ -7,7 +7,7 @@ import * as actions from './actions';
 
 function fetchUsers(action$, page) {
   return ajax({
-    url: `${ config.api.host }/users?page=${ page }`,
+    url: `${ config.api.host }/users?page=${ page }&limit=1`,
     method: 'GET',
     crossDomain: true
   })

@@ -9,7 +9,7 @@ export default function thunkAttemptFetch(page) {
   return async function(dispatch) {
     try {
       dispatch(actions.fetchThunkAttempt());
-      const response = await axios.get(`${ config.api.host }/users?page=${ page }`);
+      const response = await axios.get(`${ config.api.host }/users?page=${ page }&limit=1`);
       dispatch(actions.fetchSuccess(response.data));
     }
     catch(err) {

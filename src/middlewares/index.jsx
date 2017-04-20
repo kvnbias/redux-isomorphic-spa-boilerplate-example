@@ -3,22 +3,30 @@ import { applyMiddleware }  from 'redux';
 import { createLogger }     from 'redux-logger'
 import thunk                from 'redux-thunk';
 import websocketMiddleware  from './websocket';
+import promiseMiddleware    from './promise';
 
+/**
+ * NOTE:
+ * redux-thunk should be the 1st.
+ * Yes, it matters on SSR. If you don't put it
+ * 1st, the dispatch method will not return a
+  * promise
+ */
 export function get(...middlewares) {
 
   if (process.env.NODE_ENV === 'development') {
     const logger = createLogger();
     return applyMiddleware(
-      ...middlewares,
-      websocketMiddleware,
       thunk,
-      logger
+      websocketMiddleware,
+      ...middlewares,
+      logger,
     );
   }
 
   return applyMiddleware(
-    ...middlewares,
+    thunk,
     websocketMiddleware,
-    thunk
+    ...middlewares,
   );
 }

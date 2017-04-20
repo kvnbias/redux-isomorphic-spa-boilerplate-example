@@ -6,31 +6,16 @@ import About      from './modules/About/container';
 import Thunk      from './modules/Thunk/container';
 import Saga       from './modules/Saga/container';
 import Observable from './modules/Observable/container';
+import Users      from './modules/Users/container';
 
 /**
- * Sample nesting:
- * const routes = [
- *   { component: Root,
- *     routes: [
- *       { path: '/',
- *         exact: true,
- *         component: Home
- *       },
- *       { path: '/child/:id',
- *         component: Child,
- *         routes: [
- *           { path: '/child/:id/grand-child',
- *             component: GrandChild
- *           }
- *         ]
- *       }
- *     ]
- *   }
- *  ]
+ * NOTE: `name` is just used for my `NavItem`
+ * component and SSR checking if its unique.
+ * It is not an actual option
  */
-
 const routes = [
   {
+    name: 'Base',
     component: Base,
     routes: [
       {
@@ -62,6 +47,12 @@ const routes = [
         name: 'Observable',
         exact: true,
         component: Observable
+      },
+      {
+        path: '/users',
+        name: 'Users',
+        exact: true,
+        component: Users
       }
     ]
   }

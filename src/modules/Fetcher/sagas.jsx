@@ -7,7 +7,7 @@ import * as actions from './actions';
 import { call, put, take, fork, cancel, cancelled, takeEvery, takeLatest } from 'redux-saga/effects';
 
 function fetch(page) {
-  return axios.get(`${ config.api.host }/users?page=${ page }`);
+  return axios.get(`${ config.api.host }/users?page=${ page }&limit=1`);
 }
 
 /** WORKER */

@@ -5,6 +5,7 @@ export const ABOUT      = 'about';
 export const THUNK      = 'thunk';
 export const SAGA       = 'saga';
 export const OBSERVABLE = 'observable';
+export const USERS      = 'users';
 
 /**
  * NS: namespace

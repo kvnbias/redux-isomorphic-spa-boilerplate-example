@@ -11,6 +11,7 @@ import counter                      from '../modules/Counter';
 import register                     from '../modules/RegisterForm';
 import user                         from '../modules/Fetcher';
 import feed                         from '../modules/Feed';
+import ssr                          from '../modules/Users';
 
 const rootReducer = combineReducers({
   activeModule,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   counter,
   register,
   user,
-  feed
+  feed,
+  ssr
 });
 
 export default rootReducer;

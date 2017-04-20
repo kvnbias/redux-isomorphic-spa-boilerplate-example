@@ -10,8 +10,8 @@ import Head               from './ssr-head-handler';
 /** Server side view handler */
 export default class ViewHandler {
 
-  /** Set up provider and router context */
-  getInitialComponent(store, context, renderProps) {
+  /** Set up provider and static router */
+  getInitialComponent(store, context) {
     return (
       <Provider store={ store }>
         <StaticRouter location={ context.request.originalUrl } context={ context }>
@@ -44,8 +44,8 @@ export default class ViewHandler {
   }
 
   /** Get HTML altogether with current state */
-  renderView(store, context, renderProps) {
-    const InitialComponent = this.getInitialComponent(store, context, renderProps);
+  renderView(store, context) {
+    const InitialComponent = this.getInitialComponent(store, context);
     const initialState = store.getState();
     return this.getHTMLPrototype(InitialComponent, initialState);
   }

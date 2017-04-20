@@ -31,14 +31,16 @@ module.exports = function(server, io) {
     }, 3000);
   });
 
-  /** Get users 1 by 1 lol */
   server.get('/users', function(req, res, next) {
-    const { page } = req.query;
+    const { page, limit } = req.query;
+
+    let offset = 0;
+    if (page > 1) offset = limit * (page - 1);
 
     User.find()
     .sort('created_at')
-    .skip(page - 1)
-    .limit(1)
+    .skip(parseInt(offset))
+    .limit(parseInt(limit))
     .exec()
     .then((users) => {
       /**
@@ -51,6 +53,7 @@ module.exports = function(server, io) {
       }, 3000);
     })
     .catch(err => {
+      console.log(err)
       res.send(500, err.errors);
     });
   });

@@ -1,23 +1,27 @@
 
 import Promise from 'bluebird';
 
-/** Fetch data before server render */
-export default function FixStateBeforeLoad(dispatch, component) {
+/**
+ * Fetch data before server render.
+ * If you always need to load some data upon mounting the component
+ * dispatch the action in componentWillMount instead, it will
+ * still be rendered server-side and you don't need to put
+ * the action in the static `required`. But if you would
+ * 'ONLY' want to load the data on the server-side and
+ * the data 'SHOULD' not be loaded in the client-side
+ * without the user's interaction, assign the action
+ * on the static `required`.
+ */
+export default function FixStateBeforeLoad(dispatch, components) {
+  const prerequesites = Object.keys(components).reduce(function(prev, current) {
+    return components[current]?
+      (components[current].required || []).concat(prev) : prev;
+  }, []);
 
-  function componentWithRequired(prev, current) {
-    return (current.required || [])
-    .concat((current.WrappedComponent ? current.WrappedComponent.required : []) || [])
-    .concat(prev);
-  }
+  const promises = prerequesites.map(prerequesite => {
+    const { action, params } = prerequesite;
+    return dispatch(action(...params));
+  });
 
-  /** reduce components that has a static `required` property */
-  // const required = components.reduce(componentWithRequired, []);
-  //
-  // /** Map and dispatch required */
-  // const promises = required.map(
-  //   requiredAction => dispatch(requiredAction())
-  // );
-
-  const promises = [];
   return Promise.all(promises);
 }

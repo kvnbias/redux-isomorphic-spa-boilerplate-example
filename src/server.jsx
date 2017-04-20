@@ -15,22 +15,38 @@ const app = new Koa();
 /** serve static files */
 app.use(serve(__dirname + '/../static'));
 
-const store = initialize();
-
-app.use(async ctx => {
-
+app.use(async function(ctx, next) {
   const isMatched = matchRoutes(routes, ctx.request.originalUrl);
 
   if (_.isEmpty(isMatched)) {
     // 404
   }
   else {
-    const componentToRender = isMatched[0].route.component;
-    const viewHandler       = new ViewHandler();
 
-    await FixStateBeforeLoad(store.dispatch, componentToRender);
-    const html  = viewHandler.renderView(store, ctx, isMatched);
-    ctx.body    = html;
+    let componentsToRender = {};
+    const store = initialize();
+
+    isMatched.map(function(router) {
+      const { route  } = router;
+      /** Check route keys */
+      if (_.isObject(route) && _.has(route, 'name') && _.has(route, 'component')) {
+        /**
+         * Make sure the component is not yet a member of
+         * `componentsToRender` to avoid duplication
+         */
+        if (-1 === _.indexOf(componentsToRender, route.name)) {
+          componentsToRender[route.name] = route.component;
+        }
+      }
+    })
+
+    const viewHandler = new ViewHandler();
+
+    await FixStateBeforeLoad(store.dispatch, componentsToRender)
+    .then(function() {
+      const html  = viewHandler.renderView(store, ctx);
+      ctx.body    = html;
+    })
   }
 });
 

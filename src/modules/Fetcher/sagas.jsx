@@ -38,7 +38,7 @@ function* cancelWorkerSaga (task) {
  * const state = yield select();
  * const attemptFetchTask = yield fork(attemptFetch, action.page);
  */
-export default function* userSaga() {
+export default function* fetcherSaga() {
   while(true) {
     /**
      * Get the action if ever you need to pass

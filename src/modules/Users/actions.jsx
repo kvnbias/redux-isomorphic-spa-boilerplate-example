@@ -6,11 +6,13 @@ import * as config  from '../../../config';
 export const FETCH_USERS          = 'FETCH_USERS';
 export const FETCH_USERS_DONE     = 'FETCH_USERS_DONE';
 export const FETCH_USERS_CANCEL   = 'FETCH_USERS_CANCEL';
-
-/** These actions will be executed by the promise middleware */
 export const FETCH_USERS_ATTEMPT  = 'FETCH_USERS_ATTEMPT';
 export const FETCH_USERS_SUCCESS  = 'FETCH_USERS_SUCCESS';
 export const FETCH_USERS_ERROR    = 'FETCH_USERS_ERROR';
+
+export function fetchUsers(page, limit) {
+  return { type: FETCH_USERS, page, limit }
+}
 
 export function fetchUsersAttempt() {
   return { type: FETCH_USERS_ATTEMPT }
@@ -18,6 +20,10 @@ export function fetchUsersAttempt() {
 
 export function fetchUsersSuccess(res) {
   return { type: FETCH_USERS_SUCCESS, res }
+}
+
+export function fetchUsersCancel() {
+  return { type: FETCH_USERS_CANCEL }
 }
 
 export function fetchUsersError(err) {

@@ -42,6 +42,9 @@ export default class Users extends Component {
 
   constructor(props) {
     super(props);
+
+    this.fetchUsers = this.fetchUsers.bind(this);
+    this.cancelFetchUsers = this.cancelFetchUsers.bind(this);
   }
 
   componentWillMount() {
@@ -50,12 +53,34 @@ export default class Users extends Component {
   }
 
   fetchUsers() {
+    const { fetch, page } = this.props;
+    fetch(page, 5);
+  }
 
+  cancelFetchUsers() {
+    const { cancel } = this.props;
+    cancel();
   }
 
   render() {
+    let button = null;
+
+    if (false === this.props.isFetching) {
+      button =
+      <button onClick={ this.fetchUsers } class='mdl-cell mdl-cell--12-col centered-button mdl-button mdl-js-button mdl-button--raised'>
+        Fetch more!
+      </button>
+    }
+    else {
+      button =
+      <button onClick={ this.cancelFetchUsers } class='mdl-cell mdl-cell--12-col centered-button mdl-button mdl-js-button mdl-button--raised'>
+        Cancel!
+      </button>
+    }
+
     const { users } = this.props;
     const userList = [];
+
     users.map(function(user) {
       userList.push(
         <tr key={ user._id }>
@@ -89,7 +114,8 @@ export default class Users extends Component {
           upon loading. How ever if the component is not loaded via
           SSR the user's list must be empty.
         </h6>
-        <table class='mdl-data-table mdl-shadow--2dp user-list-table'>
+        { button }
+        <table class='mdl-cell mdl-cell--12-col mdl-data-table mdl-shadow--2dp user-list-table'>
         <thead>
           <tr>
             <th class='mdl-data-table__cell--non-numeric'>ID</th>
@@ -111,5 +137,7 @@ Users.propTypes = {
   setActiveModule:  PropTypes.func.isRequired,
   isFetching:       PropTypes.bool.isRequired,
   users:            PropTypes.array.isRequired,
-  page:             PropTypes.number.isRequired
+  page:             PropTypes.number.isRequired,
+  fetch:            PropTypes.func.isRequired,
+  cancel:           PropTypes.func.isRequired
 }

@@ -16,6 +16,7 @@ export default function ssr(state = defaultState, action) {
         page: ++state.page
       });
       break;
+    case actions.FETCH_USERS:
     case actions.FETCH_USERS_ATTEMPT:
       return Object.assign({}, state, { isFetching: true });
       break;

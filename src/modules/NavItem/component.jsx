@@ -1,9 +1,9 @@
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import PropTypes            from 'prop-types';
+import { NavLink }          from 'react-router-dom';
 
-let NavItem = class NavItem extends Component {
+export default class NavItem extends Component {
 
   constructor(props) {
     super(props);
@@ -27,5 +27,3 @@ NavItem.propTypes = {
     path: PropTypes.string.isRequired
   }).isRequired
 }
-
-export default NavItem;

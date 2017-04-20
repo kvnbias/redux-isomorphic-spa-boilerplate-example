@@ -1,12 +1,14 @@
 
-import { connect } from 'react-redux';
-import { setActiveModule } from '../../actions';
-import { ABOUT } from '../../constants';
-import About from './component';
+import { connect }          from 'react-redux';
+import { ABOUT }            from '../../constants';
+import { setActiveModule }  from '../../actions';
+import About                from './component';
 
 const mapDispatchToProps = function(dispatch) {
   return {
-    setActiveModule: () => dispatch(setActiveModule(ABOUT))
+    setActiveModule: () => dispatch(
+      setActiveModule(ABOUT)
+    )
   };
 }
 

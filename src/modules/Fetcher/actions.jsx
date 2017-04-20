@@ -1,14 +1,14 @@
 
 export const FETCH_OBSERVABLE_ATTEMPT = 'FETCH_OBSERVABLE_ATTEMPT';
-export const FETCH_THUNK_ATTEMPT = 'FETCH_THUNK_ATTEMPT';
-export const FETCH_SAGA_ATTEMPT = 'FETCH_SAGA_ATTEMPT';
+export const FETCH_THUNK_ATTEMPT      = 'FETCH_THUNK_ATTEMPT';
+export const FETCH_SAGA_ATTEMPT       = 'FETCH_SAGA_ATTEMPT';
 
-export const FETCH_SUCCESS = 'FETCH_SUCCESS';
-export const FETCH_ERROR = 'FETCH_ERROR';
-export const FETCH_DONE = 'FETCH_DONE';
-export const FETCH_CANCEL = 'FETCH_CANCEL';
+export const FETCH_SUCCESS            = 'FETCH_SUCCESS';
+export const FETCH_ERROR              = 'FETCH_ERROR';
+export const FETCH_DONE               = 'FETCH_DONE';
+export const FETCH_CANCEL             = 'FETCH_CANCEL';
 
-export const FETCH_CANCELED_BY_THUNK = 'FETCH_CANCELED_BY_THUNK';
+export const FETCH_CANCELED_BY_THUNK  = 'FETCH_CANCELED_BY_THUNK';
 
 export function fetchThunkAttempt() {
   return { type: FETCH_THUNK_ATTEMPT };

@@ -1,10 +1,10 @@
 
-import React from 'react';
-import Base from './modules/Base/container';
-import Home from './modules/Home/container';
-import About from './modules/About/container';
-import Thunk from './modules/Thunk/container';
-import Saga from './modules/Saga/container';
+import React      from 'react';
+import Base       from './modules/Base/container';
+import Home       from './modules/Home/container';
+import About      from './modules/About/container';
+import Thunk      from './modules/Thunk/container';
+import Saga       from './modules/Saga/container';
 import Observable from './modules/Observable/container';
 
 /**

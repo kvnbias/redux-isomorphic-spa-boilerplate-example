@@ -1,13 +1,13 @@
 
 import 'rxjs';
-import { matchRoutes } from 'react-router-config';
-import Koa from 'koa';
-import serve from 'koa-static';
-import path from 'path';
-import _ from 'underscore';
-import routes from './routes';
-import initialize from './store';
-import ViewHandler from './utils/ssr-view-handler';
+import { matchRoutes }    from 'react-router-config';
+import Koa                from 'koa';
+import serve              from 'koa-static';
+import path               from 'path';
+import _                  from 'underscore';
+import routes             from './routes';
+import initialize         from './store';
+import ViewHandler        from './utils/ssr-view-handler';
 import FixStateBeforeLoad from './utils/fix-state-before-load';
 
 const app = new Koa();
@@ -26,11 +26,11 @@ app.use(async ctx => {
   }
   else {
     const componentToRender = isMatched[0].route.component;
-    const viewHandler = new ViewHandler();
+    const viewHandler       = new ViewHandler();
 
     await FixStateBeforeLoad(store.dispatch, componentToRender);
-    const html = viewHandler.renderView(store, ctx, isMatched);
-    ctx.body = html;
+    const html  = viewHandler.renderView(store, ctx, isMatched);
+    ctx.body    = html;
   }
 });
 

@@ -1,7 +1,7 @@
 
-import * as config from '../../../config';
+import * as config  from '../../../config';
 import * as actions from './actions';
-import axios from 'axios';
+import axios        from 'axios';
 
 /** A thunk action */
 export default function thunkAttemptFetch(page) {

@@ -1,6 +1,6 @@
 
-import * as config from '../../../config';
-import axios from 'axios';
+import * as config  from '../../../config';
+import axios        from 'axios';
 
 import * as actions from './actions';
 

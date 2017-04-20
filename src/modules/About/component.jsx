@@ -1,9 +1,9 @@
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Counter from '../Counter/container';
-import AppHelmet from '../AppHelmet/component';
-import { ABOUT } from '../../constants';
+import PropTypes            from 'prop-types';
+import Counter              from '../Counter/container';
+import AppHelmet            from '../AppHelmet/component';
+import { ABOUT }            from '../../constants';
 
 export default class About extends Component {
 

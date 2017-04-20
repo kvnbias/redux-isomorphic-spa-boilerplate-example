@@ -1,10 +1,10 @@
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import AppHelmet from '../AppHelmet/component';
-import RegisterForm from '../RegisterForm/container';
-import Fetcher from '../Fetcher/container';
-import Feed from '../Feed/container';
+import PropTypes            from 'prop-types';
+import AppHelmet            from '../AppHelmet/component';
+import RegisterForm         from '../RegisterForm/container';
+import Fetcher              from '../Fetcher/container';
+import Feed                 from '../Feed/container';
 
 export default class Saga extends Component {
 

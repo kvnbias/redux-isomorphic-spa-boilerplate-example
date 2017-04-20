@@ -1,8 +1,8 @@
 
-import { SET_ACTIVE_MODULE } from '../actions';
-import { HOME } from '../constants';
+import { SET_ACTIVE_MODULE }  from '../actions';
+import { HOME }               from '../constants';
 
-export const activeModule = function(state = HOME, action) {
+export default function activeModule(state = HOME, action) {
   switch(action.type){
   case SET_ACTIVE_MODULE:
     return action.activeModule;

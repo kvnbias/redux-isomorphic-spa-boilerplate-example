@@ -1,6 +1,6 @@
 
-import { connect } from 'react-redux';
-import Feed from './component';
+import { connect }  from 'react-redux';
+import Feed         from './component';
 
 const mapDispatchToProps = function(dispatch) {
   return { dispatch };

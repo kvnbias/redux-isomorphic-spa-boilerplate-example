@@ -1,7 +1,7 @@
 
-import * as config from '../../config';
-import * as constants from '../constants';
-import io from 'socket.io-client';
+import * as config      from '../../config';
+import * as constants   from '../constants';
+import io               from 'socket.io-client';
 import * as feedActions from '../modules/Feed/actions';
 
 /** Kinda dirty */

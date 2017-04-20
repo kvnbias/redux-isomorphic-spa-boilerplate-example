@@ -1,5 +1,5 @@
 
-import { connect } from 'react-redux';
+import { connect }  from 'react-redux';
 import RegisterForm from './component';
 
 const mapDispatchToProps = function(dispatch) {

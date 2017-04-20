@@ -15,8 +15,7 @@ module.exports = function(server, io) {
     setTimeout(function() {
       user.save(function(err, user) {
         if (err) {
-          res.send(400, err.errors);
-          next();
+          return res.send(400, err.errors);
         };
 
         /**

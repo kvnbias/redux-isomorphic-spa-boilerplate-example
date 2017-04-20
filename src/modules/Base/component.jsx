@@ -1,10 +1,10 @@
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { renderRoutes } from 'react-router-config';
-import Nav from '../Nav/component';
-import Footer from '../Footer/component';
-import routes from '../../routes';
+import PropTypes            from 'prop-types';
+import { renderRoutes }     from 'react-router-config';
+import Nav                  from '../Nav/component';
+import Footer               from '../Footer/component';
+import routes               from '../../routes';
 
 export default class Base extends Component {
 

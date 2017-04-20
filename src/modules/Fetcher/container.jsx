@@ -1,6 +1,6 @@
 
-import { connect } from 'react-redux';
-import Fetcher from './component';
+import { connect }  from 'react-redux';
+import Fetcher      from './component';
 
 const mapDispatchToProps = function(dispatch) {
   return { dispatch };

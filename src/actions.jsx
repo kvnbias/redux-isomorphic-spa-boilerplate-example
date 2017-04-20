@@ -1,8 +1,8 @@
 
 /** websocket actions */
-export const EMIT_EVENT = 'EMIT_EVENT';
-export const SOCKET_CONNECT = 'SOCKET_CONNECT';
-export const SOCKET_DISCONNECT = 'SOCKET_DISCONNECT';
+export const EMIT_EVENT         = 'EMIT_EVENT';
+export const SOCKET_CONNECT     = 'SOCKET_CONNECT';
+export const SOCKET_DISCONNECT  = 'SOCKET_DISCONNECT';
 
 export function emitEvent(namespace, eventName, message) {
   return { type: EMIT_EVENT, namespace, eventName, message };

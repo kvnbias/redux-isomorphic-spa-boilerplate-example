@@ -1,15 +1,15 @@
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import _ from 'underscore';
-import UserListItem from '../UserListItem/component';
+import PropTypes            from 'prop-types';
+import _                    from 'underscore';
+import UserListItem         from '../UserListItem/component';
 
 export default class Fetcher extends Component {
 
   constructor(props) {
     super(props);
 
-    this.fetch = this.fetch.bind(this);
+    this.fetch  = this.fetch.bind(this);
     this.cancel = this.cancel.bind(this);
   }
 
@@ -69,10 +69,10 @@ export default class Fetcher extends Component {
 };
 
 Fetcher.propTypes = {
-  page: PropTypes.number.isRequired,
+  page:       PropTypes.number.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  users: PropTypes.array.isRequired,
-  errors: PropTypes.object.isRequired,
-  fetch: PropTypes.func.isRequired,
-  cancel: PropTypes.func.isRequired
+  users:      PropTypes.array.isRequired,
+  errors:     PropTypes.object.isRequired,
+  fetch:      PropTypes.func.isRequired,
+  cancel:     PropTypes.func.isRequired
 };

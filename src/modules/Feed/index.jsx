@@ -1,6 +1,6 @@
 
 import * as actions from './actions';
-import _ from 'underscore';
+import _            from 'underscore';
 
 const defaultState = { users: [] };
 

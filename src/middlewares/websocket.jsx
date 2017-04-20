@@ -1,25 +1,24 @@
 
 import * as actions from '../actions';
-import Socket from '../utils/socket';
+import Socket       from '../utils/socket';
 
 export default function websocketMiddleware(store) {
   const socket = new Socket(store);
 
   return function(next) {
+
     return function(action) {
-      switch (action.type) {
+      const { type, namespace, eventName, message } = action;
+
+      switch(type) {
         case actions.EMIT_EVENT:
-          socket.emit(
-            action.namespace,
-            action.eventName,
-            action.message
-          );
+          socket.emit(namespace, eventName, message);
           break;
         case actions.SOCKET_CONNECT:
-          socket.start(action.namespace);
+          socket.start(namespace);
           break;
         case actions.SOCKET_DISCONNECT:
-          socket.stop(action.namespace);
+          socket.stop(namespace);
           break;
       }
 

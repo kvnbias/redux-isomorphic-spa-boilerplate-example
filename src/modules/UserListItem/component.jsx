@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-let UserListItem = class UserListItem extends Component {
+class UserListItem extends Component {
 
   constructor(props) {
     super(props);

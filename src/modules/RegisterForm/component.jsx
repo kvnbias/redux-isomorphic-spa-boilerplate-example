@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import _ from 'underscore';
+import PropTypes            from 'prop-types';
+import _                    from 'underscore';
 
 /**
  * This component will use its local state for the form fields
@@ -97,8 +97,8 @@ export default class RegisterForm extends Component {
 };
 
 RegisterForm.propTypes = {
-  attemptRegister: PropTypes.func.isRequired,
-  isAttempting: PropTypes.bool.isRequired,
-  isSuccessful: PropTypes.bool.isRequired,
-  errors: PropTypes.object.isRequired
+  attemptRegister:  PropTypes.func.isRequired,
+  isAttempting:     PropTypes.bool.isRequired,
+  isSuccessful:     PropTypes.bool.isRequired,
+  errors:           PropTypes.object.isRequired
 };

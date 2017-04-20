@@ -1,8 +1,8 @@
 
-import { applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger'
-import thunk from 'redux-thunk';
-import websocketMiddleware from './websocket';
+import { applyMiddleware }  from 'redux';
+import { createLogger }     from 'redux-logger'
+import thunk                from 'redux-thunk';
+import websocketMiddleware  from './websocket';
 
 export function get(...middlewares) {
 

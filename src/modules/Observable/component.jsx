@@ -1,10 +1,10 @@
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import AppHelmet from '../AppHelmet/component';
-import RegisterForm from '../RegisterForm/container';
-import Fetcher from '../Fetcher/container';
-import Feed from '../Feed/container';
+import PropTypes            from 'prop-types';
+import AppHelmet            from '../AppHelmet/component';
+import RegisterForm         from '../RegisterForm/container';
+import Fetcher              from '../Fetcher/container';
+import Feed                 from '../Feed/container';
 
 export default class Observable extends Component {
 
@@ -87,20 +87,20 @@ export default class Observable extends Component {
 };
 
 Observable.propTypes = {
-  setActiveModule: PropTypes.func.isRequired,
+  setActiveModule:    PropTypes.func.isRequired,
 
   resetRegisterState: PropTypes.func.isRequired,
-  attemptRegister: PropTypes.func.isRequired,
-  isAttempting: PropTypes.bool.isRequired,
-  isSuccessful: PropTypes.bool.isRequired,
+  attemptRegister:    PropTypes.func.isRequired,
+  isAttempting:       PropTypes.bool.isRequired,
+  isSuccessful:       PropTypes.bool.isRequired,
   registrationErrors: PropTypes.object.isRequired,
 
-  page: PropTypes.number.isRequired,
-  fetch: PropTypes.func.isRequired,
-  cancel: PropTypes.func.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  users: PropTypes.array.isRequired,
-  userListErrors: PropTypes.object.isRequired,
+  page:               PropTypes.number.isRequired,
+  fetch:              PropTypes.func.isRequired,
+  cancel:             PropTypes.func.isRequired,
+  isFetching:         PropTypes.bool.isRequired,
+  users:              PropTypes.array.isRequired,
+  userListErrors:     PropTypes.object.isRequired,
 
-  feed: PropTypes.object.isRequired
+  feed:               PropTypes.object.isRequired
 }

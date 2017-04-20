@@ -1,10 +1,10 @@
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { HOME, ABOUT } from '../../constants';
-import { setActiveModule } from '../../actions';
+import PropTypes            from 'prop-types';
+import { HOME, ABOUT }      from '../../constants';
+import setActiveModule      from '../../actions';
 
-const Counter = class Counter extends Component {
+export default class Counter extends Component {
 
   constructor(props) {
     super(props);
@@ -72,15 +72,13 @@ const Counter = class Counter extends Component {
 };
 
 Counter.propTypes = {
-  section: PropTypes.string.isRequired,
-  counter: PropTypes.shape({
-    home: PropTypes.number.isRequired,
-    about: PropTypes.number.isRequired
+  section:  PropTypes.string.isRequired,
+  counter:  PropTypes.shape({
+    home:   PropTypes.number.isRequired,
+    about:  PropTypes.number.isRequired
   }).isRequired,
-  incrementHomeCounter: PropTypes.func.isRequired,
-  decrementHomeCounter: PropTypes.func.isRequired,
-  incrementAboutCounter: PropTypes.func.isRequired,
-  decrementAboutCounter: PropTypes.func.isRequired
+  incrementHomeCounter:   PropTypes.func.isRequired,
+  decrementHomeCounter:   PropTypes.func.isRequired,
+  incrementAboutCounter:  PropTypes.func.isRequired,
+  decrementAboutCounter:  PropTypes.func.isRequired
 }
-
-export default Counter;

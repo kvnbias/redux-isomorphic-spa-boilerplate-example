@@ -1,9 +1,9 @@
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import UserListItem from '../UserListItem/component';
-import * as actions from '../../actions';
-import * as constants from '../../constants';
+import PropTypes            from 'prop-types';
+import UserListItem         from '../UserListItem/component';
+import * as actions         from '../../actions';
+import * as constants       from '../../constants';
 
 export default class Feed extends Component {
 
@@ -77,5 +77,5 @@ export default class Feed extends Component {
 
 Feed.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  users: PropTypes.array.isRequired
+  users:    PropTypes.array.isRequired
 };

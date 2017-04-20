@@ -1,6 +1,6 @@
 
-import { connect } from 'react-redux';
-import Counter from './component';
+import { connect }  from 'react-redux';
+import Counter      from './component';
 
 import * as actions from './actions';
 

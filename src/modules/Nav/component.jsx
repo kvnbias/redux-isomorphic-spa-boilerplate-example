@@ -1,9 +1,9 @@
 
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import NavItem from '../NavItem/component';
+import PropTypes          from 'prop-types';
+import NavItem            from '../NavItem/component';
 
-const Nav = class Nav extends Component {
+export default class Nav extends Component {
 
   constructor(props) {
     super(props);
@@ -31,9 +31,7 @@ const Nav = class Nav extends Component {
 
 Nav.propTypes = {
   navItems: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    path: PropTypes.string.isRequired
+    name:   PropTypes.string.isRequired,
+    path:   PropTypes.string.isRequired
   }).isRequired)
 }
-
-export default Nav;

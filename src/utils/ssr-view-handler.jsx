@@ -1,11 +1,11 @@
 
-import React from 'react';
-import { Provider } from 'react-redux';
-import { StaticRouter } from 'react-router';
+import React              from 'react';
+import { Provider }       from 'react-redux';
+import { StaticRouter }   from 'react-router';
 import { renderToString } from 'react-dom/server';
-import { renderRoutes } from 'react-router-config';
-import routes from '../routes';
-import Head from './ssr-head-handler';
+import { renderRoutes }   from 'react-router-config';
+import routes             from '../routes';
+import Head               from './ssr-head-handler';
 
 /** Server side view handler */
 export default class ViewHandler {

@@ -1,6 +1,6 @@
 
-import { connect } from 'react-redux';
-import Base from './component';
+import { connect }  from 'react-redux';
+import Base         from './component';
 
 const mapDispatchToProps = function(dispatch) {
   return { dispatch };

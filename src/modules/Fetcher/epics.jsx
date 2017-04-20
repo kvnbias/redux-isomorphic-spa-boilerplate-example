@@ -1,7 +1,7 @@
 
-import * as config from '../../../config';
-import { ajax } from 'rxjs/observable/dom/ajax';
-import { concat } from 'rxjs/observable/concat'
+import * as config  from '../../../config';
+import { ajax }     from 'rxjs/observable/dom/ajax';
+import { concat }   from 'rxjs/observable/concat'
 
 import * as actions from './actions';
 

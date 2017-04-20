@@ -1,8 +1,8 @@
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom/server';
-import Helmet from 'react-helmet';
+import PropTypes            from 'prop-types';
+import ReactDOM             from 'react-dom/server';
+import Helmet               from 'react-helmet';
 
 /**
  * Wrapper component containing HTML metadata and boilerplate tags.

@@ -1,18 +1,16 @@
 {
     "node": {
         "host": "127.0.0.1",
-        "port": 8080,
+        "port": 1337,
         "env": "development"
     },
     "renderer": {
         "app_name": "Isomorphic Redux Trial",
-        "host": "http://127.0.0.1",
-        "port": 5000
+        "host": "http://isotrial.org"
     },
     "frontend": {
         "app_name": "Isomorphic Redux Trial",
-        "host": "http://local.isotrial.org",
-        "port": 80
+        "host": "http://local.isotrial.org"
     },
     "database": {
         "mongodb": {
@@ -20,8 +18,8 @@
             "port": 27017,
             "database": "redux-isomorphic",
             "authdb": "redux-isomorphic",
-            "user": "username",
-            "pass": ""
+            "user": "kev",
+            "pass": "chickenburritome"
         }
     },
     "security": {

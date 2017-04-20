@@ -1,9 +1,9 @@
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import AppHelmet from '../AppHelmet/component';
-import Counter from '../Counter/container';
-import { HOME } from '../../constants';
+import PropTypes            from 'prop-types';
+import AppHelmet            from '../AppHelmet/component';
+import Counter              from '../Counter/container';
+import { HOME }             from '../../constants';
 
 export default class Home extends Component {
 
@@ -38,9 +38,9 @@ export default class Home extends Component {
 
   constructor(props) {
     super(props);
-    this.getMeta = this.getMeta.bind(this);
-    this.getLink = this.getLink.bind(this);
-    this.getScript = this.getScript.bind(this);
+    this.getMeta    = this.getMeta.bind(this);
+    this.getLink    = this.getLink.bind(this);
+    this.getScript  = this.getScript.bind(this);
   }
 
   componentWillMount() {

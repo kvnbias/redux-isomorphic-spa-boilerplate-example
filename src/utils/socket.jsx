@@ -1,7 +1,7 @@
 
+import io               from 'socket.io-client';
 import * as config      from '../../config';
 import * as constants   from '../constants';
-import io               from 'socket.io-client';
 import * as feedActions from '../modules/Feed/actions';
 
 /** Kinda dirty */
@@ -39,8 +39,8 @@ export default class Socket {
 
   attachFrontendDispatchers(cb) {
     this.socket[constants.NS_FRONTEND]
-      .on(constants.EV_USER_REGISTERED, function(user) {
-        cb(feedActions.feedReceiveUser(user));
-      });
+    .on(constants.EV_USER_REGISTERED, user =>
+      cb(feedActions.feedReceiveUser(user))
+    );
   }
 }

@@ -1,24 +1,27 @@
 
 import { createStore, compose } from 'redux';
-import { get }                  from './middlewares';
-import rootReducer              from './reducers';
 
-import { routerMiddleware }     from 'react-router-redux';
 import createSagaMiddleware     from 'redux-saga';
+import { routerMiddleware }     from 'react-router-redux';
 import { createEpicMiddleware } from 'redux-observable';
+
+import apply                    from './middlewares';
+import rootReducer              from './reducers';
 
 import registerSaga             from './modules/RegisterForm/sagas';
 import fetcherSaga              from './modules/Fetcher/sagas';
 import userSaga                 from './modules/Users/sagas';
+
 import rootEpic                 from './epics';
 
 export default function initialize(preloadedState = {}, history = null) {
+
   /** Initiate middlewares */
-  const routeMiddleware = routerMiddleware(history);
   const sagaMiddleware  = createSagaMiddleware();
+  const routeMiddleware = routerMiddleware(history);
   const epicMiddleware  = createEpicMiddleware(rootEpic);
 
-  const middlewares = get(
+  const middlewares = apply(
     sagaMiddleware,
     routeMiddleware,
     epicMiddleware

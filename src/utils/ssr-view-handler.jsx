@@ -5,6 +5,7 @@ import ReactDOMServer     from 'react-dom/server';
 import { Provider }       from 'react-redux';
 import { StaticRouter }   from 'react-router';
 import { renderRoutes }   from 'react-router-config';
+
 import routes             from '../routes';
 
 /** Server side view handler */
@@ -61,6 +62,7 @@ export default class ViewHandler {
   renderView(store, context) {
     const InitialComponent = this.getInitialComponent(store, context);
     const initialState = store.getState();
+
     return this.getHTMLPrototype(InitialComponent, initialState);
   }
 }

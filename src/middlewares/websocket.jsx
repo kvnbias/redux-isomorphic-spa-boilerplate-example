@@ -5,24 +5,21 @@ import Socket       from '../utils/socket';
 export default function websocketMiddleware(store) {
   const socket = new Socket(store);
 
-  return function(next) {
+  return next => action => {
+    const { type, namespace, eventName, message } = action;
 
-    return function(action) {
-      const { type, namespace, eventName, message } = action;
-
-      switch(type) {
-        case actions.EMIT_EVENT:
-          socket.emit(namespace, eventName, message);
-          break;
-        case actions.SOCKET_CONNECT:
-          socket.start(namespace);
-          break;
-        case actions.SOCKET_DISCONNECT:
-          socket.stop(namespace);
-          break;
-      }
-
-      next(action);
+    switch(type) {
+      case actions.EMIT_EVENT:
+        socket.emit(namespace, eventName, message);
+        break;
+      case actions.SOCKET_CONNECT:
+        socket.start(namespace);
+        break;
+      case actions.SOCKET_DISCONNECT:
+        socket.stop(namespace);
+        break;
     }
+
+    next(action);
   }
 }

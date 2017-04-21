@@ -9,10 +9,13 @@ import Promise from 'bluebird';
  * server-side.
  */
 export default function FixStateBeforeLoad(dispatch, components) {
-  const prerequesites = Object.keys(components).reduce(function(prev, current) {
-    return components[current]?
-      (components[current].required || []).concat(prev) : prev;
-  }, []);
+  const prerequesites = Object.keys(components).reduce(
+    (prev, current) => {
+      return components[current] ?
+        (components[current].required || []).concat(prev) : prev;
+      },
+    []
+  );
 
   const promises = prerequesites.map(prerequesite => {
     const { action, params } = prerequesite;

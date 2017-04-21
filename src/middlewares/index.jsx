@@ -12,7 +12,7 @@ import promiseMiddleware    from './promise';
  * 1st, the dispatch method will not return a
   * promise
  */
-export function get(...middlewares) {
+export default function apply(...middlewares) {
 
   if (process.env.NODE_ENV === 'development') {
     const logger = createLogger();

@@ -4,6 +4,7 @@ import PropTypes            from 'prop-types';
 import { Provider }         from 'react-redux';
 import { ConnectedRouter }  from 'react-router-redux';
 import { renderRoutes }     from 'react-router-config';
+
 import routes               from './routes';
 import Base                 from './modules/Base/container';
 

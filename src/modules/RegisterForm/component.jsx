@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes            from 'prop-types';
 import _                    from 'underscore';
+import ErrorHandler         from '../ErrorHandler/component';
 
 /**
  * This component will use its local state for the form fields
@@ -44,38 +45,17 @@ export default class RegisterForm extends Component {
    * and simple.
    */
   render() {
-    let button = null;
-
-    if (false === this.props.isAttempting) {
-      button = <button onClick={ this.onSubmit } class='mdl-button mdl-button--colored mdl-js-button'>
-        Submit
-      </button>
-    }
-    else {
-      button = <button class='mdl-button mdl-button--colored mdl-js-button'>
-        Attempting
-      </button>
-    }
-
-    let errors = [];
-    if (_.keys(this.props.errors).length > 0) {
-      for (let error in this.props.errors) {
-        if (this.props.errors.hasOwnProperty(error)) {
-          errors.push(<div class='error' key={ error }>{ this.props.errors[error].message }</div>);
-        }
-      }
-    }
-
-    let success = [];
-    if (this.props.isSuccessful) {
-      success.push(<div key='success' class='success'>Registration Success</div>);
-    }
+    const { isAttempting, isSuccessful } = this.props;
+    const buttonText = isAttempting? 'Attempting' : 'Submit';
+    const buttonAction = !isAttempting? this.onSubmit : null;
+    const success = isSuccessful ?
+      (<div key='success' class='success'>Registration Success</div>) : null;
 
     return (
       <div class='mdl-cell mdl-cell--4-col register-form'>
         <div id='register-container'>
           <h5>Register</h5>
-          { errors }
+          <ErrorHandler errors={ this.props.errors } />
           { success }
           <div class='mdl-textfield mdl-js-textfield'>
             <input onChange={ this.onChange } class='mdl-textfield__input' type='text' id='first_name' placeholder='First Name' />
@@ -90,7 +70,9 @@ export default class RegisterForm extends Component {
             <input onChange={ this.onChange } class='mdl-textfield__input' type='password' id='password' placeholder='Password' />
           </div>
         </div>
-        { button }
+        <button onClick={ buttonAction } class='mdl-button mdl-button--colored mdl-js-button'>
+          { buttonText }
+        </button>
       </div>
     );
   }

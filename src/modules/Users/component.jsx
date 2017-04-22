@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes            from 'prop-types';
 import AppHelmet            from '../AppHelmet/component';
+import UserTableRow         from '../UserTableRow/component';
 import { fetchUserByThunk } from './actions';
 
 export default class Users extends Component {
@@ -63,37 +64,10 @@ export default class Users extends Component {
   }
 
   render() {
-    let button = null;
-
-    if (false === this.props.isFetching) {
-      button =
-      <button onClick={ this.fetchUsers } class='mdl-cell mdl-cell--12-col centered-button mdl-button mdl-js-button mdl-button--raised'>
-        Fetch more!
-      </button>
-    }
-    else {
-      button =
-      <button onClick={ this.cancelFetchUsers } class='mdl-cell mdl-cell--12-col centered-button mdl-button mdl-js-button mdl-button--raised'>
-        Cancel!
-      </button>
-    }
-
-    const userList = this.props.users.map(user => (
-      <tr key={ user._id }>
-        <td class='mdl-data-table__cell--non-numeric'>
-          { user._id }
-        </td>
-        <td class='mdl-data-table__cell--non-numeric'>
-          { `${ user.first_name} ${ user.last_name }` }
-        </td>
-        <td class='mdl-data-table__cell--non-numeric'>
-          { user.email }
-        </td>
-        <td class='mdl-data-table__cell--non-numeric'>
-          { user.created_at }
-        </td>
-      </tr>
-  ));
+    const { isFetching, users } = this.props;
+    const buttonText = isFetching ? 'Cancel!' : 'Fetch!';
+    const buttonAction = isFetching? this.cancelFetchUsers : this.fetchUsers;
+    const userList = users.map(user => (<UserTableRow key={ user._id } user={ user } />));
 
     return (
       <div class='centered-text mdl-grid'>
@@ -104,7 +78,9 @@ export default class Users extends Component {
           upon loading. How ever if the component is not loaded via
           SSR the user's list must be empty.
         </h6>
-        { button }
+        <button onClick={ buttonAction } class='mdl-cell mdl-cell--12-col centered-button mdl-button mdl-js-button mdl-button--raised'>
+          { buttonText }
+        </button>
         <table class='mdl-cell mdl-cell--12-col mdl-data-table mdl-shadow--2dp user-list-table'>
           <thead>
             <tr>

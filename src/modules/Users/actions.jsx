@@ -35,7 +35,7 @@ export const fetchUsersDone = () =>
  * complicated.
  */
 export const fetchUserByThunk = (page, limit) => dispatch =>
-  new Promise(async function(resolve, reject) {
+  new Promise(async (resolve, reject) => {
     try {
       dispatch(fetchUsersAttempt());
       const response = await axios.get(`${ config.api.host }/users?page=${ page }&limit=${ limit }`);

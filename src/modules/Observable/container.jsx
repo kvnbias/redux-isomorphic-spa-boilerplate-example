@@ -26,7 +26,7 @@ const mapDispatchToProps = dispatch => ({
   )
 })
 
-const mapStateToProps = function(state, props) {
+const mapStateToProps = (state, props) => {
   const { register, user, feed }        = state;
   const { isAttempting, isSuccessful }  = register;
   const { isFetching, list, page }      = user;

@@ -6,7 +6,6 @@ import Thunk                from './component';
 import * as registerActions from '../RegisterForm/actions';
 import * as fetcherActions  from '../Fetcher/actions';
 
-
 const mapDispatchToProps = dispatch => ({
   setActiveModule: () => dispatch(
     setActiveModule(THUNK)
@@ -27,7 +26,7 @@ const mapDispatchToProps = dispatch => ({
   )
 })
 
-const mapStateToProps = function(state, props) {
+const mapStateToProps = (state, props) => {
   const { register, user, feed }        = state;
   const { isAttempting, isSuccessful }  = register;
   const { isFetching, list, page }      = user;

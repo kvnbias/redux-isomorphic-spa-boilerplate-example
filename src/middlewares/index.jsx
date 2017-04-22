@@ -12,10 +12,11 @@ import promiseMiddleware    from './promise';
  * 1st, the dispatch method will not return a
   * promise
  */
-export default function apply(...middlewares) {
+const apply = (...middlewares) => {
 
   if (process.env.NODE_ENV === 'development') {
     const logger = createLogger();
+
     return applyMiddleware(
       thunk,
       websocketMiddleware,
@@ -30,3 +31,5 @@ export default function apply(...middlewares) {
     ...middlewares,
   );
 }
+
+export default apply;

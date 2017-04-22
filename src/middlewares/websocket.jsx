@@ -2,7 +2,7 @@
 import * as actions from '../actions';
 import Socket       from '../utils/socket';
 
-export default function websocketMiddleware(store) {
+const websocketMiddleware = store => {
   const socket = new Socket(store);
 
   return next => action => {
@@ -23,3 +23,5 @@ export default function websocketMiddleware(store) {
     next(action);
   }
 }
+
+export default websocketMiddleware;

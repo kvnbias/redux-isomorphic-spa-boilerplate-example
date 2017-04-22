@@ -1,29 +1,28 @@
 
-import * as config  from '../../../config';
 import axios        from 'axios';
-
+import * as effects from 'redux-saga/effects';
+import * as config  from '../../../config';
 import * as actions from './actions';
 
-import { call, put, takeEvery } from 'redux-saga/effects';
 
-function register(action) {
-  return axios.post(`${ config.api.host }/register`, action.data);
-}
+const register = action => axios.post(`${ config.api.host }/register`, action.data);
 
 /** WORKER: will be fired on REGISTER_ATTEMPT actions */
 function* attemptRegister(data) {
+
     try {
-      const user = yield call(register, data);
-      yield put({ type: actions.REGISTER_SUCCESS });
+      const user = yield effects.call(register, data);
+      yield effects.put({ type: actions.REGISTER_SUCCESS });
     } catch(err) {
-      yield put({
+      yield effects.put({
         type: actions.REGISTER_ERROR,
         err: err.response.data
       });
     }
     finally {
-      yield put({ type: actions.REGISTER_DONE });
+      yield effects.put({ type: actions.REGISTER_DONE });
     }
+  
 }
 
 /**
@@ -55,6 +54,6 @@ export default function* registerSaga() {
      * Arguments of REGISTER_SAGA_ATTEMPT will
      * be passed on attemptRegister function.
      */
-    takeEvery(actions.REGISTER_SAGA_ATTEMPT, attemptRegister)
+    effects.takeEvery(actions.REGISTER_SAGA_ATTEMPT, attemptRegister)
   ];
 }

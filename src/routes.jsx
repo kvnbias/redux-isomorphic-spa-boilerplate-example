@@ -1,6 +1,6 @@
 
 import React      from 'react';
-import Base       from './modules/Base/container';
+import Base       from './modules/Base/component';
 import Home       from './modules/Home/container';
 import About      from './modules/About/container';
 import Thunk      from './modules/Thunk/container';

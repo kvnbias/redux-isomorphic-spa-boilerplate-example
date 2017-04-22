@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import PropTypes            from 'prop-types';
 import UserListItem         from '../UserListItem/component';
-import * as actions         from '../../actions';
 import * as constants       from '../../constants';
 
 export default class Feed extends Component {
@@ -14,47 +13,37 @@ export default class Feed extends Component {
   }
 
   componentWillMount() {
-    const { dispatch } = this.props;
+    const { connect } = this.props;
 
     /**
      * Initialize socket connection. Establish
      * connection to `frontend` namespace
      */
-    dispatch(actions.socketConnect(constants.NS_FRONTEND));
+    connect();
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { emit } = this.props;
 
     /**
      * Will join the room `redux-isomorphic-feed` under
      * the namespace `frontend` via `initialize` event.
      */
-    dispatch(actions.emitEvent(
-      constants.NS_FRONTEND,
-      constants.EV_INITIALIZE,
-      constants.CH_FEED
-    ));
+    emit(constants.EV_INITIALIZE, constants.CH_FEED);
   }
 
   componentWillUnmount() {
-    const { dispatch } = this.props;
-    dispatch(actions.socketDisconnect(
-      constants.NS_FRONTEND
-    ));
+    const { disconnect } = this.props;
+    disconnect();
   }
 
   ping() {
-    const { dispatch } = this.props;
-    dispatch(actions.emitEvent(
-      constants.NS_FRONTEND,
-      constants.EV_PING,
-      'PONG'
-    ));
+    const { emit } = this.props;
+    emit(constants.EV_PING, 'PONG');
   }
 
   render() {
-    const users = this.props.users.map(function(user) {
+    const users = this.props.users.map(user => {
       const name = `${ user.first_name } ${ user.last_name }`;
       return <UserListItem key={ user._id } name={ name } />
     });
@@ -76,6 +65,7 @@ export default class Feed extends Component {
 };
 
 Feed.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  connect:  PropTypes.func.isRequired,
+  emit:     PropTypes.func.isRequired,
   users:    PropTypes.array.isRequired
 };

@@ -42,20 +42,18 @@ export default class Observable extends Component {
   }
 
   componentWillMount() {
-    this.props.setActiveModule();
-    this.props.resetRegisterState();
+    const { setActiveModule, resetRegisterState } = this.props;
+
+    setActiveModule();
+    resetRegisterState();
   }
 
   render() {
+    const { registrationErrors, userListErrors, feed } = this.props;
 
     return (
       <div class='centered-text mdl-grid'>
-        <AppHelmet
-          title='Observable'
-          meta={ this.getMeta() }
-          link={ this.getLink() }
-          script={ this.getScript() }
-        />
+        <AppHelmet title='Observable' meta={ this.getMeta() } link={ this.getLink() } script={ this.getScript() } />
         <h6>
           This is `Observable` fragment. This should change on nav click.
           However the current users for this page should stay
@@ -66,21 +64,9 @@ export default class Observable extends Component {
           Socket connection should be reopened upon the feeds remount.
           By pressing the `PING` button the api server must log `PONG`
         </h6>
-        <RegisterForm
-          attemptRegister={ this.props.attemptRegister }
-          isAttempting={ this.props.isAttempting }
-          isSuccessful={ this.props.isSuccessful }
-          errors={ this.props.registrationErrors }
-        />
-        <Fetcher
-          fetch={ this.props.fetch }
-          cancel={ this.props.cancel }
-          page={ this.props.page }
-          isFetching={ this.props.isFetching }
-          users={ this.props.users }
-          errors={ this.props.userListErrors }
-        />
-        <Feed feed={ this.props.feed } />
+        <RegisterForm errors={ registrationErrors } { ...this.props } />
+        <Fetcher errors={ userListErrors } { ...this.props } />
+        <Feed { ...this.props } />
       </div>
     );
   }

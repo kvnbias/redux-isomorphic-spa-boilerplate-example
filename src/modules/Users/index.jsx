@@ -4,7 +4,8 @@ import * as actions from './actions';
 
 const defaultState = { users: [], page: 1, isFetching: false };
 
-export default function ssr(state = defaultState, action) {
+const ssr = (state = defaultState, action) => {
+
   switch(action.type) {
     case actions.FETCH_USERS_SUCCESS:
       const possiblyDuplicatingUsers = state.users.concat(action.res);
@@ -31,3 +32,5 @@ export default function ssr(state = defaultState, action) {
   }
 
 }
+
+export default ssr;

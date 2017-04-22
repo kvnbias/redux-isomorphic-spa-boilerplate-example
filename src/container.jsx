@@ -6,7 +6,7 @@ import { ConnectedRouter }  from 'react-router-redux';
 import { renderRoutes }     from 'react-router-config';
 
 import routes               from './routes';
-import Base                 from './modules/Base/container';
+import Base                 from './modules/Base/component';
 
 export default class Root extends Component {
   render() {

@@ -48,7 +48,7 @@ export default class Fetcher extends Component {
       }
     }
 
-    const users = this.props.users.map((user) => {
+    const users = this.props.users.map(user => {
       const name = `${ user.first_name } ${ user.last_name }`;
       return <UserListItem key={ user._id } name={ name } />
     });

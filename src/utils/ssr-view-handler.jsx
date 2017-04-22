@@ -32,7 +32,7 @@ export default class ViewHandler {
      */
     const head = Helmet.renderStatic();
 
-    const html = `
+    return `
       <!DOCTYPE html>
       <html lang='en-us'>
         <head>
@@ -54,8 +54,6 @@ export default class ViewHandler {
         </body>
       </html>
     `;
-
-    return html;
   }
 
   /** Get HTML altogether with current state */

@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes            from 'prop-types';
 import AppHelmet            from '../AppHelmet/component';
-import fetchUserThunk       from './actions';
+import { fetchUserByThunk } from './actions';
 
 export default class Users extends Component {
 
@@ -37,7 +37,7 @@ export default class Users extends Component {
 
   /** Will only be dispatched on SSR. Must be static */
   static required = [
-    { action: fetchUserThunk, params: [1, 5] }
+    { action: fetchUserByThunk, params: [1, 5] }
   ];
 
   constructor(props) {
@@ -78,36 +78,26 @@ export default class Users extends Component {
       </button>
     }
 
-    const { users } = this.props;
-    const userList = [];
-
-    users.map(function(user) {
-      userList.push(
-        <tr key={ user._id }>
-          <td class='mdl-data-table__cell--non-numeric'>
-            { user._id }
-          </td>
-          <td class='mdl-data-table__cell--non-numeric'>
-            { `${ user.first_name} ${ user.last_name }` }
-          </td>
-          <td class='mdl-data-table__cell--non-numeric'>
-            { user.email }
-          </td>
-          <td class='mdl-data-table__cell--non-numeric'>
-            { user.created_at }
-          </td>
-        </tr>
-      )
-    });
+    const userList = this.props.users.map(user => (
+      <tr key={ user._id }>
+        <td class='mdl-data-table__cell--non-numeric'>
+          { user._id }
+        </td>
+        <td class='mdl-data-table__cell--non-numeric'>
+          { `${ user.first_name} ${ user.last_name }` }
+        </td>
+        <td class='mdl-data-table__cell--non-numeric'>
+          { user.email }
+        </td>
+        <td class='mdl-data-table__cell--non-numeric'>
+          { user.created_at }
+        </td>
+      </tr>
+  ));
 
     return (
       <div class='centered-text mdl-grid'>
-        <AppHelmet
-          title='Users'
-          meta={ this.getMeta() }
-          link={ this.getLink() }
-          script={ this.getScript() }
-        />
+        <AppHelmet title='Users' meta={ this.getMeta() } link={ this.getLink() } script={ this.getScript() } />
         <h6>
           This is `Users` fragment. If this component is rendered
           in the server side. `5` users must be in the list below
@@ -116,14 +106,14 @@ export default class Users extends Component {
         </h6>
         { button }
         <table class='mdl-cell mdl-cell--12-col mdl-data-table mdl-shadow--2dp user-list-table'>
-        <thead>
-          <tr>
-            <th class='mdl-data-table__cell--non-numeric'>ID</th>
-            <th class='mdl-data-table__cell--non-numeric'>Name</th>
-            <th class='mdl-data-table__cell--non-numeric'>Email</th>
-            <th class='mdl-data-table__cell--non-numeric'>Date Registered</th>
-          </tr>
-        </thead>
+          <thead>
+            <tr>
+              <th class='mdl-data-table__cell--non-numeric'>ID</th>
+              <th class='mdl-data-table__cell--non-numeric'>Name</th>
+              <th class='mdl-data-table__cell--non-numeric'>Email</th>
+              <th class='mdl-data-table__cell--non-numeric'>Date Registered</th>
+            </tr>
+          </thead>
         <tbody>
           { userList }
         </tbody>

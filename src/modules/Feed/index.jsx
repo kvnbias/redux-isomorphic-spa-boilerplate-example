@@ -4,7 +4,8 @@ import _            from 'underscore';
 
 const defaultState = { users: [] };
 
-export default function feed(state, action) {
+const feed = (state, action) => {
+
   switch(action.type){
     case actions.FEED_RECEIVE_USER:
       return Object.assign({}, state, {
@@ -17,4 +18,7 @@ export default function feed(state, action) {
     default:
       return state || defaultState;
   }
+
 };
+
+export default feed;

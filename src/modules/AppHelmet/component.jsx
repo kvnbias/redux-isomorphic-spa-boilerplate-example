@@ -1,24 +1,13 @@
 
 import React, { Component } from 'react';
+import { connect }          from 'react-redux';
 import PropTypes            from 'prop-types';
 import Helmet               from 'react-helmet';
-import { connect }          from 'react-redux';
 
 class AppHelmet extends Component {
 
   render() {
-    const { title, meta, link, script } = this.props;
-
-    return (
-      <Helmet
-        title={ title }
-        titleTemplate={ `%s` }
-        defaultTitle='Default Title'
-        script={ script }
-        meta={ meta }
-        link={ link }
-      />
-    );
+    return (<Helmet { ...this.props } titleTemplate={ `%s` } defaultTitle='Default Title' />);
   }
 };
 
@@ -30,8 +19,6 @@ AppHelmet.propTypes = {
 };
 
 
-const mapStateToProps = function(state, props) {
-  return props;
-};
+const mapStateToProps = (state, props) => props
 
 export default connect(mapStateToProps)(AppHelmet);

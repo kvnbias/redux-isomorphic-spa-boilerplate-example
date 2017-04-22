@@ -1,23 +1,26 @@
 
 import React, { Component } from 'react';
-import PropTypes            from 'prop-types';
+import { connect }          from 'react-redux';
 import { renderRoutes }     from 'react-router-config';
+import PropTypes            from 'prop-types';
 import Nav                  from '../Nav/component';
 import Footer               from '../Footer/component';
 import routes               from '../../routes';
 
-export default class Base extends Component {
+class Base extends Component {
 
   constructor(props) {
     super(props);
   }
 
   render() {
+    const { routes } = this.props;
+
     return (
       <div class='base-container'>
-        <Nav navItems={ this.props.route.routes } />
+        <Nav navItems={ routes } />
         <main class='mdl-layout__content'>
-          { renderRoutes(this.props.route.routes) }
+          { renderRoutes(routes) }
         </main>
         <Footer />
       </div>
@@ -26,5 +29,14 @@ export default class Base extends Component {
 };
 
 Base.propTypes = {
-  route: PropTypes.object.isRequired
+  routes: PropTypes.array.isRequired
 }
+
+const mapDispatchToProps = dispatch => ({})
+
+const mapStateToProps = (state, props) => {
+  const { routes } = props.route;
+
+  return { routes };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Base);

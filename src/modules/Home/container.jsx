@@ -4,16 +4,12 @@ import { setActiveModule }  from '../../actions';
 import { HOME }             from '../../constants';
 import Home                 from './component';
 
-const mapDispatchToProps = function(dispatch) {
-  return {
-    setActiveModule: () => dispatch(
-      setActiveModule(HOME)
-    )
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  setActiveModule: () => dispatch(
+    setActiveModule(HOME)
+  )
+})
 
-const mapStateToProps = function(state, props) {
-  return { };
-}
+const mapStateToProps = (state, props) => ({})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

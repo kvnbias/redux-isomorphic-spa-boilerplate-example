@@ -4,26 +4,25 @@ import Counter      from './component';
 
 import * as actions from './actions';
 
-const mapDispatchToProps = function(dispatch) {
-  return {
-    incrementHomeCounter: (counter) => dispatch(
-      actions.incrementHomeCounter(counter)
-    ),
-    decrementHomeCounter: (counter) => dispatch(
-      actions.decrementHomeCounter(counter)
-    ),
+const mapDispatchToProps = dispatch => ({
+  incrementHomeCounter: counter => dispatch(
+    actions.incrementHomeCounter(counter)
+  ),
+  decrementHomeCounter: counter => dispatch(
+    actions.decrementHomeCounter(counter)
+  ),
 
-    incrementAboutCounter: (counter) => dispatch(
-      actions.incrementAboutCounter(counter)
-    ),
-    decrementAboutCounter: (counter) => dispatch(
-      actions.decrementAboutCounter(counter)
-    )
-  };
-}
+  incrementAboutCounter: counter => dispatch(
+    actions.incrementAboutCounter(counter)
+  ),
+  decrementAboutCounter: counter => dispatch(
+    actions.decrementAboutCounter(counter)
+  )
+})
 
-const mapStateToProps = function(state, props) {
+const mapStateToProps = (state, props) => {
   const { counter } = state;
+
   return { counter };
 }
 

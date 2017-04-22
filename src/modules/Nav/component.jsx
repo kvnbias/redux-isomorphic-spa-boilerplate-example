@@ -10,9 +10,8 @@ export default class Nav extends Component {
   }
 
   render() {
-    const {navItems} = this.props;
-    const items = navItems.map(function(navItem, index) {
-      return (<NavItem key={ index } navItem={ navItem } />);
+    const items = this.props.navItems.map(navItem => {
+      return (<NavItem key={ navItem.path } navItem={ navItem } />);
     });
 
     return (

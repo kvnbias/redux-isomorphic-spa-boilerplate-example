@@ -44,19 +44,15 @@ export default class Home extends Component {
   }
 
   componentWillMount() {
-    this.props.setActiveModule();
+    const { setActiveModule } = this.props;
+    setActiveModule();
   }
 
   render() {
 
     return (
       <div class='mdl-cell mdl-cell--4-col page-content'>
-        <AppHelmet
-          title='Home'
-          meta={ this.getMeta() }
-          link={ this.getLink() }
-          script={ this.getScript() }
-        />
+        <AppHelmet title='Home' meta={ this.getMeta() } link={ this.getLink() } script={ this.getScript() } />
         <Counter counter={ this.props.counter } section={ HOME } />
         <h5>
           This is `Home` fragment. This should change on nav click.

@@ -1,38 +1,31 @@
 
-import { connect }              from 'react-redux';
-import { setActiveModule }      from '../../actions';
+import { connect }          from 'react-redux';
+import { setActiveModule }  from '../../actions';
+import { THUNK }            from '../../constants';
+import Thunk                from './component';
+import * as registerActions from '../RegisterForm/actions';
+import * as fetcherActions  from '../Fetcher/actions';
 
-import { THUNK }                from '../../constants';
 
-import { resetRegisterState }   from '../RegisterForm/actions';
-import thunkAttemptRegister     from '../RegisterForm/thunk';
+const mapDispatchToProps = dispatch => ({
+  setActiveModule: () => dispatch(
+    setActiveModule(THUNK)
+  ),
 
-import { fetchCanceledByThunk } from '../Fetcher/actions';
-import thunkAttemptFetch        from '../Fetcher/thunk';
+  resetRegisterState: () => dispatch(
+    registerActions.resetRegisterState()
+  ),
+  attemptRegister: data => dispatch(
+    registerActions.attemptRegisterByThunk(data)
+  ),
 
-import Thunk from './component';
-
-const mapDispatchToProps = function(dispatch) {
-  return {
-    setActiveModule: () => dispatch(
-      setActiveModule(THUNK)
-    ),
-
-    resetRegisterState: () => dispatch(
-      resetRegisterState()
-    ),
-    attemptRegister: data => dispatch(
-      thunkAttemptRegister(data)
-    ),
-
-    fetch: page => dispatch(
-      thunkAttemptFetch(page)
-    ),
-    cancel: () => dispatch(
-      fetchCanceledByThunk()
-    )
-  };
-}
+  fetch: page => dispatch(
+    fetcherActions.attemptFetchByThunk(page)
+  ),
+  cancel: () => dispatch(
+    fetcherActions.fetchCanceledByThunk()
+  )
+})
 
 const mapStateToProps = function(state, props) {
   const { register, user, feed }        = state;

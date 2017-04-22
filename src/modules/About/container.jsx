@@ -4,16 +4,16 @@ import { ABOUT }            from '../../constants';
 import { setActiveModule }  from '../../actions';
 import About                from './component';
 
-const mapDispatchToProps = function(dispatch) {
-  return {
-    setActiveModule: () => dispatch(
-      setActiveModule(ABOUT)
-    )
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  setActiveModule: () => dispatch(
+    setActiveModule(ABOUT)
+  )
+})
 
-const mapStateToProps = function(state, props) {
-  return { };
+const mapStateToProps = (state, props) => {
+  const { counter } = state;
+
+  return { counter };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(About);

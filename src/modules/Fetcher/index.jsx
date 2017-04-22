@@ -11,7 +11,8 @@ const defaultState = {
   shouldCancel: false
 };
 
-export default function user(state, action) {
+const user = (state, action) => {
+
   switch(action.type){
     case actions.FETCH_OBSERVABLE_ATTEMPT:
     case actions.FETCH_THUNK_ATTEMPT:
@@ -57,3 +58,5 @@ export default function user(state, action) {
       return state || defaultState;
   }
 };
+
+export default user;

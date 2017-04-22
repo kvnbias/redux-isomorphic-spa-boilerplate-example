@@ -2,7 +2,8 @@
 import * as actions from './actions';
 
 const defaultState = { isAttempting: false, errors: {}, isSuccessful: false };
-export default function register(state, action) {
+const register = (state, action) => {
+
   switch(action.type){
     case actions.REGISTER_THUNK_ATTEMPT:
     case actions.REGISTER_SAGA_ATTEMPT:
@@ -24,4 +25,7 @@ export default function register(state, action) {
     default:
       return state || defaultState;
   }
+
 };
+
+export default register;

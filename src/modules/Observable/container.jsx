@@ -1,35 +1,30 @@
 
 import { connect }          from 'react-redux';
-
 import { setActiveModule }  from '../../actions';
 import { OBSERVABLE }       from '../../constants';
+import Observable           from './component';
+import * as registerActions from '../RegisterForm/actions';
+import * as fetcherActions  from '../Fetcher/actions';
 
-import { resetRegisterState, userObservableAttemptRegister } from '../RegisterForm/actions';
-import { fetchObservableAttempt, fetchCancel } from '../Fetcher/actions';
+const mapDispatchToProps = dispatch => ({
+  setActiveModule: () => dispatch(
+    setActiveModule(OBSERVABLE)
+  ),
 
-import Observable from './component';
+  resetRegisterState: () => dispatch(
+    registerActions.resetRegisterState()
+  ),
+  attemptRegister: data => dispatch(
+    registerActions.userObservableAttemptRegister(data)
+  ),
 
-const mapDispatchToProps = function(dispatch) {
-  return {
-    setActiveModule: () => dispatch(
-      setActiveModule(OBSERVABLE)
-    ),
-
-    resetRegisterState: () => dispatch(
-      resetRegisterState()
-    ),
-    attemptRegister: data => dispatch(
-      userObservableAttemptRegister(data)
-    ),
-
-    fetch: page => dispatch(
-      fetchObservableAttempt(page)
-    ),
-    cancel: () => dispatch(
-      fetchCancel()
-    )
-  };
-}
+  fetch: page => dispatch(
+    fetcherActions.fetchObservableAttempt(page)
+  ),
+  cancel: () => dispatch(
+    fetcherActions.fetchCancel()
+  )
+})
 
 const mapStateToProps = function(state, props) {
   const { register, user, feed }        = state;

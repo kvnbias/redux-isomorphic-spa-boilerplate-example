@@ -5,8 +5,8 @@ import { concat }   from 'rxjs/observable/concat'
 
 import * as actions from './actions';
 
-function fetchUsers(action$, page) {
-  return ajax({
+const fetchUsers = (action$, page) =>
+  ajax({
     url: `${ config.api.host }/users?page=${ page }&limit=1`,
     method: 'GET',
     crossDomain: true
@@ -19,9 +19,7 @@ function fetchUsers(action$, page) {
   .catch(err => Observable.of(
     actions.fetchFailed(err.xhr.response)
   ));
-}
 
-export function fetchUsersEpic(action$) {
-  return action$.ofType(actions.FETCH_OBSERVABLE_ATTEMPT)
+export const fetchUsersEpic = action$ =>
+  action$.ofType(actions.FETCH_OBSERVABLE_ATTEMPT)
   .mergeMap(action => fetchUsers(action$, action.page));
-}

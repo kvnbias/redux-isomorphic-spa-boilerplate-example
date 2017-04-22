@@ -1,14 +1,10 @@
 
-import * as config  from '../../../config';
 import axios        from 'axios';
-
+import * as config  from '../../../config';
 import * as actions from './actions';
-
 import { call, put, take, fork, cancel, cancelled, takeEvery, takeLatest } from 'redux-saga/effects';
 
-function fetch(page) {
-  return axios.get(`${ config.api.host }/users?page=${ page }&limit=1`);
-}
+const fetch = page => axios.get(`${ config.api.host }/users?page=${ page }&limit=1`);
 
 /** WORKER */
 function* attemptFetch(page) {

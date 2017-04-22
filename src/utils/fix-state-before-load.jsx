@@ -8,7 +8,7 @@ import Promise from 'bluebird';
  * to dispatch the actions that are need in the
  * server-side.
  */
-export default function FixStateBeforeLoad(dispatch, components) {
+const FixStateBeforeLoad = (dispatch, components) => {
   const prerequesites = Object.keys(components).reduce(
     (prev, current) => {
       return components[current] ?
@@ -24,3 +24,5 @@ export default function FixStateBeforeLoad(dispatch, components) {
 
   return Promise.all(promises);
 }
+
+export default FixStateBeforeLoad;

@@ -50,12 +50,7 @@ export default class Saga extends Component {
 
     return (
       <div class='centered-text mdl-grid'>
-        <AppHelmet
-          title='Saga'
-          meta={ this.getMeta() }
-          link={ this.getLink() }
-          script={ this.getScript() }
-        />
+        <AppHelmet title='Saga' meta={ this.getMeta() } link={ this.getLink() } script={ this.getScript() } />
         <h6>
           This is `Saga` fragment. This should change on nav click.
           However the current users for this page should stay
@@ -66,21 +61,9 @@ export default class Saga extends Component {
           Socket connection should be reopened upon the feeds remount.
           By pressing the `PING` button the api server must log `PONG`
         </h6>
-        <RegisterForm
-          attemptRegister={ this.props.attemptRegister }
-          isAttempting={ this.props.isAttempting }
-          isSuccessful={ this.props.isSuccessful }
-          errors={ this.props.registrationErrors }
-        />
-        <Fetcher
-          fetch={ this.props.fetch }
-          cancel={ this.props.cancel }
-          page={ this.props.page }
-          isFetching={ this.props.isFetching }
-          users={ this.props.users }
-          errors={ this.props.userListErrors }
-        />
-        <Feed feed={ this.props.feed } />
+        <RegisterForm errors={ this.props.registrationErrors } { ...this.props } />
+        <Fetcher errors={ this.props.userListErrors } { ...this.props } />
+        <Feed { ...this.props } />
       </div>
     );
   }

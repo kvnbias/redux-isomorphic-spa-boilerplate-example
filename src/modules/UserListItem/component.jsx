@@ -9,11 +9,11 @@ class UserListItem extends Component {
   }
 
   render() {
+    const { name } = this.props;
+
     return (
       <li class='mdl-list__item'>
-        <span class='mdl-list__item-primary-content'>
-          { this.props.name }
-        </span>
+        <span class='mdl-list__item-primary-content'>{ name }</span>
       </li>
     );
   }

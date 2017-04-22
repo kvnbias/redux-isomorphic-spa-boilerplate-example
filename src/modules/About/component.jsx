@@ -41,20 +41,17 @@ export default class About extends Component {
   }
 
   componentWillMount() {
-    this.props.setActiveModule();
+    const { setActiveModule } = this.props;
+    setActiveModule();
   }
 
   render() {
+    const { counter } = this.props;
 
     return (
       <div class='mdl-cell mdl-cell--4-col page-content'>
-        <AppHelmet
-          title='About'
-          meta={ this.getMeta() }
-          link={ this.getLink() }
-          script={ this.getScript() }
-        />
-        <Counter counter={ this.props.counter } section={ ABOUT } />
+        <AppHelmet title='About' meta={ this.getMeta() } link={ this.getLink() } script={ this.getScript() } />
+        <Counter counter={ counter } section={ ABOUT } />
         <h5>
           This is `About` fragment. This should change on nav click.
           However the current counter for this page should stay
@@ -66,5 +63,9 @@ export default class About extends Component {
 };
 
 About.propTypes = {
+  counter:  PropTypes.shape({
+    home:   PropTypes.number.isRequired,
+    about:  PropTypes.number.isRequired
+  }).isRequired,
   setActiveModule: PropTypes.func.isRequired
 }

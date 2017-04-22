@@ -1,6 +1,6 @@
 
-export default function promiseMiddleware() {
-  return next => action => {
+const promiseMiddleware = () =>
+  next => action => {
     const { promise, type, ...args } = action;
 
     if (!promise) return next(action);
@@ -19,5 +19,6 @@ export default function promiseMiddleware() {
       next({ ...args, err: err.response.data, type: FAILURE });
       next({ type: DONE });
     });
-  };
-}
+  }
+
+export default promiseMiddleware;

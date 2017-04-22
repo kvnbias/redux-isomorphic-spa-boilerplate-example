@@ -1,35 +1,31 @@
 
 import { connect }          from 'react-redux';
-
 import { setActiveModule }  from '../../actions';
 import { SAGA }             from '../../constants';
-
-import { userSagaAttemptRegister, resetRegisterState } from '../RegisterForm/actions';
-import { fetchSagaAttempt, fetchCancel } from '../Fetcher/actions';
+import * as registerActions from '../RegisterForm/actions';
+import * as fetcherActions  from '../Fetcher/actions';
 
 import Saga from './component';
 
-const mapDispatchToProps = function(dispatch) {
-  return {
-    setActiveModule: () => dispatch(
-      setActiveModule(SAGA)
-    ),
+const mapDispatchToProps = dispatch => ({
+  setActiveModule: () => dispatch(
+    setActiveModule(SAGA)
+  ),
 
-    resetRegisterState: () => dispatch(
-      resetRegisterState()
-    ),
-    attemptRegister: data => dispatch(
-      userSagaAttemptRegister(data)
-    ),
+  resetRegisterState: () => dispatch(
+    registerActions.resetRegisterState()
+  ),
+  attemptRegister: data => dispatch(
+    registerActions.userSagaAttemptRegister(data)
+  ),
 
-    fetch: page => dispatch(
-      fetchSagaAttempt(page)
-    ),
-    cancel: () => dispatch(
-      fetchCancel()
-    )
-  };
-}
+  fetch: page => dispatch(
+    fetcherActions.fetchSagaAttempt(page)
+  ),
+  cancel: () => dispatch(
+    fetcherActions.fetchCancel()
+  )
+})
 
 const mapStateToProps = function(state, props) {
   const { register, user, feed }        = state;

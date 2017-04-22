@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Boilerplate for isomorphic rendering using redux",
   "main": "webpack.config.js",
+  "scripts": {
+    "start": "concurrently \"node api/app.js\" \"node bin/www\""
+  },
   "repository": "https://github.com/kvnbai/redux-isomorphic-spa-boilerplate",
   "author": "kvnbai <kevin.baisas@gmail.com>",
   "license": "MIT",
@@ -21,6 +24,7 @@
     "bcrypt": "^1.0.2",
     "bluebird": "^3.5.0",
     "chalk": "^1.1.3",
+    "concurrently": "^3.4.0",
     "copy-webpack-plugin": "^4.0.1",
     "history": "^4.6.1",
     "json-loader": "^0.5.4",
